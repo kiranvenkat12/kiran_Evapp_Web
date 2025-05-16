@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import  { useState } from "react";
 import { NavLink } from "react-router-dom";
 import "./header.css";
-import EVEAP_logo from "../../../public/images/logo/EVAAP_LOGO.png";
+import logo from "../../../public/images/logo/EVAAP_LOGO.png";
 import { FaBars } from "react-icons/fa";
 import { ImCross } from "react-icons/im";
 
@@ -15,7 +15,7 @@ const Header = () => {
     <header className="header-section">
       <div className="flex-container">
         <div className="header-logo-wrapper">
-          <img src={EVEAP_logo} alt="Company Logo" className="header-logo" />
+        <img src={logo} alt="Company Logo" className="header-logo" />
         </div>
         <h2 className="header_h2">
           EMPLOYMENT VERIFICATION AND ACADEMIC PROOFING
@@ -33,7 +33,7 @@ const Header = () => {
                   isActive ? "header_active_navlink" : "header_navlink"
                 }
               >
-                H
+                Homeeee
               </NavLink>
               <NavLink
                 to="/aboutUsPage"
