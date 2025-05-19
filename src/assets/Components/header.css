@@ -1,215 +1,47 @@
-.header_active_navlink {
-  border-bottom: 1px solid rgba(206, 204, 204, 0.952);
-  width: auto;
-  padding: 0.5rem;
+.evvap-header {
+  display: flex;
+  /*justify-content: space-between;*/
+  padding: 20px 40px;
+  align-items: center;
+  margin-left: 15%;
+  gap: 250px;
+}
+
+.evvap-logo {
+  width: 100px;
+}
+
+.evvap-header nav {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+}
+
+.evvap-header a {
   text-decoration: none;
+  color: #3c3c3c;
+  font-size: 14px;
 }
-.header-section {
-  padding: 1rem;
-  max-height: 100%;
-  height: 15%;
-  position: fixed;
-  top: 0%;
-  background:linear-gradient(135deg, #e3f2fd, #bbdefb);
-  /*background-image: url(./header_images/backgound_image.jpg);*/
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: 50%;
-  width: 100vw;
-  z-index: 100;
-  opacity: 0.97;
-}
-
-.flex-container {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
-}
-
-.header-logo-wrapper {
-  width: 10%;
-  height: 50%;
-  position: absolute;
-  left: 2%;
-  top: 0px;
-}
-.header-logo {
-  position: absolute;
-  top: -30%;
-}
-
-.header_h2 {
-  width: 50%;
-  height: 30%;
-  position: absolute;
-  left: 22%;
-  top: 12%;
-  font-size: 90%;
-  align-content: center;
-  text-align: center;
-  font-weight: 800;
-  font-size: large;
-}
-
-.header_div_navlink,
-.header_div_active_navlink {
-  width: auto;
-  position: absolute;
-  top: 50%;
-  left: 30%;
-}
-
-.header_div_navlink_ul {
-  list-style: none;
-  width: auto;
-}
-
-.header_div_navlink_ul li {
-  padding: 0.7rem;
-  display: flex;
-  justify-content: space-between;
-}
-
-.header_navlink {
-  width: auto;
-  padding: 0.5rem;
+.evvap-header a:hover{
   color:black;
-  text-decoration: none;
 }
 
-.header_navlink:hover {
-  border-bottom: 1px solid rgba(206, 204, 204, 0.952);
+.join-now {
+  font-weight: bold;
 }
-
-.header_menu_bar_btn {
-  width: auto;
-  position: absolute;
-  right: 18%;
-  top: 60%;
-  color: blue;
-  border: 0.5px solid rgba(192, 192, 231, 0.473);
-  height: 35px;
-  font-size: large;
-  border-radius: 10px;
-  padding-top: 1px;
-  display: none;
-}
-
-.header_div_login {
-  width: 7%;
-  position: absolute;
-  right: 10%;
-  top: 30%;
-  height: 100px;
-  border-radius: 10px;
-  text-align: center;
-  display: flex;
-  gap: 20px;
-}
-.verify-btn {
-  background-color: #1a73e8; /* Google-style blue */
-  color: #fff;
-  padding: 12px 28px;
-  font-size: 16px;
-  font-weight: 500;
-  border: none;
-  border-radius: 6px;
+.sign-in-btn {
+  padding: 8px 16px;
+  border: 1px solid #0a66c2;
+  color: #0a66c2;
+  border-radius: 24px;
+  background: none;
   cursor: pointer;
-  transition: background-color 0.3s ease;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
-
-.verify-btn:hover {
-  background-color: #1669c1;
+.sign-in-btn:hover{
+  background-color: #dff9fb;
 }
-
-.verify-btn:active {
-  background-color: #0f5ab5;
-}
-
-.verify-btn:focus {
-  outline: none;
-  box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.4);
-}
-
-
-
-@media (max-width: 900px) {
-  .header_div_navlink {
-    left: 20%;
-  }
-  .header_div_login {
-    width: 10%;
-    position: absolute;
-    right: 2%;
-    top: 3%;
-    height: 120px;
-    border-radius: 10px;
-  }
-}
-
-@media (max-width: 760px) {
-  .header_h2 {
-    display: none;
-  }
-  .header-logo-wrapper {
-    width: 20%;
-    height: 95%;
-    position: fixed;
-    left: 35%;
-    top: 10%;
-  }
-
-  .header_div_navlink,
-  .header_div_active_navlink {
-    position: absolute;
-    left: 55%;
-    top: 90%;
-    border: 1px solid blue;
-    background-color: white;
-    z-index: 100;
-  }
-  .header_div_active_navlink {
-    top: -680%;
-  }
-  .header_div_navlink_ul li {
-    width: 180px;
-    padding: 1rem;
-    flex-direction: column;
-  }
-  .header_navlink {
-    width: auto;
-    padding: 0.5rem;
-    color: blue;
-  }
-
-  .header_navlink:hover {
-    border-bottom: 1px solid blue;
-  }
-  .header_menu_bar_btn {
-    display: block;
-    right: 15%;
-  }
-
-  .header_div_login {
-    width: 5%;
-    position: absolute;
-    right: 35%;
-    top: 10%;
-    height: 120px;
-    border-radius: 10px;
-  }
-
-  .header_div_help_btn {
-    display: none;
-  }
-  .header_div_login_btn {
-    position: relative;
-    left: 220%;
-    top: 0%;
-    width: auto;
-    font-size: small;
-    border: 1px solid blue;
-  }
+.active-link {
+  font-weight: bold;
+  color: #0a66c2;
+  border-bottom: 2px solid #0a66c2;
 }
