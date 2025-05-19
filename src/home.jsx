@@ -32,6 +32,8 @@ const Home = () => {
           </Carousel.Item>
           <Carousel.Item>
             <img src={img2} alt="image2" className="Home_Carousal_div_img" />
+
+
             <Carousel.Caption>
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
             </Carousel.Caption>

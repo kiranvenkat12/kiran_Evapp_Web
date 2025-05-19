@@ -76,10 +76,10 @@ const Header = () => {
         </button>
         <div className="header_div_login">
           <NavLink to="/loginForm">
-            <button className="header_div_login_btn">Login</button>
+            <button className="verify-btn">Login</button>
           </NavLink>
           <NavLink to="/admin">
-          <button className="header_div_help_btn">Help</button></NavLink>
+          <button className="verify-btn">Help</button></NavLink>
         </div>
       </div>
     </header>

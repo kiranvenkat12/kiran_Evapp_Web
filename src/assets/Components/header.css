@@ -7,10 +7,11 @@
 .header-section {
   padding: 1rem;
   max-height: 100%;
-  height: 20%;
+  height: 15%;
   position: fixed;
   top: 0%;
-  background-image: url(./header_images/backgound_image.jpg);
+  background:linear-gradient(135deg, #e3f2fd, #bbdefb);
+  /*background-image: url(./header_images/backgound_image.jpg);*/
   background-repeat: no-repeat;
   background-size: cover;
   background-position: 50%;
@@ -27,8 +28,8 @@
 }
 
 .header-logo-wrapper {
-  width: 15%;
-  height: 80%;
+  width: 10%;
+  height: 50%;
   position: absolute;
   left: 2%;
   top: 0px;
@@ -73,7 +74,7 @@
 .header_navlink {
   width: auto;
   padding: 0.5rem;
-  color: white;
+  color:black;
   text-decoration: none;
 }
 
@@ -98,27 +99,41 @@
 .header_div_login {
   width: 7%;
   position: absolute;
-  right: 5%;
-  top: 6%;
+  right: 10%;
+  top: 30%;
   height: 100px;
   border-radius: 10px;
   text-align: center;
+  display: flex;
+  gap: 20px;
 }
-.header_div_login_btn,
-.header_div_help_btn {
-  color: blue;
-  border: 2px solid blue;
-  border-radius: 10px;
-}
-.header_div_help_btn {
-  margin-top: 26px;
+.verify-btn {
+  background-color: #1a73e8; /* Google-style blue */
+  color: #fff;
+  padding: 12px 28px;
+  font-size: 16px;
+  font-weight: 500;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-.header_div_login_btn:hover,
-.header_div_help_btn:hover {
-  background-color: blue;
-  color: white;
+.verify-btn:hover {
+  background-color: #1669c1;
 }
+
+.verify-btn:active {
+  background-color: #0f5ab5;
+}
+
+.verify-btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.4);
+}
+
+
 
 @media (max-width: 900px) {
   .header_div_navlink {
