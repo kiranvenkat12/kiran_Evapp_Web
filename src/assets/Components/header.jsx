@@ -1,88 +1,27 @@
-import  { useState } from "react";
 import { NavLink } from "react-router-dom";
-import "./header.css";
-import logo from "../../../public/images/logo/EVAAP_LOGO.png";
-import { FaBars } from "react-icons/fa";
-import { ImCross } from "react-icons/im";
+import "./Header.css";
 
 const Header = () => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const toggleButton = () => {
-    setIsOpen(!isOpen);
-  };
   return (
-    <header className="header-section">
-      <div className="flex-container">
-        <div className="header-logo-wrapper">
-        <img src={logo} alt="Company Logo" className="header-logo" />
-        </div>
-        <h2 className="header_h2">
-          EMPLOYMENT VERIFICATION AND ACADEMIC PROOFING
-        </h2>
-        <nav
-          className={
-            isOpen ? "header_div_navlink" : "header_div_active_navlink"
-          }
-        >
-          <ul className="header_div_navlink_ul">
-            <li>
-              <NavLink
-                to="/home"
-                className={({ isActive }) =>
-                  isActive ? "header_active_navlink" : "header_navlink"
-                }
-              >
-                Home
-              </NavLink>
-              <NavLink
-                to="/aboutUsPage"
-                className={({ isActive }) =>
-                  isActive ? "header_active_navlink" : "header_navlink"
-                }
-              >
-                About us
-              </NavLink>
-              <NavLink
-                to="/contact_usPage"
-                className={({ isActive }) =>
-                  isActive ? "header_active_navlink" : "header_navlink"
-                }
-              >
-                Contact us
-              </NavLink>
-              <NavLink
-                to="/ourServices"
-                className={({ isActive }) =>
-                  isActive ? "header_active_navlink" : "header_navlink"
-                }
-              >
-                Our Services
-              </NavLink>
-              <NavLink
-                to="/founderPage"
-                className={({ isActive }) =>
-                  isActive ? "header_active_navlink" : "header_navlink"
-                }
-              >
-                Our Founders
-              </NavLink>
-            </li>
-          </ul>
-        </nav>
-
-        <button className="header_menu_bar_btn" onClick={toggleButton}>
-          {isOpen ? <ImCross /> : <FaBars />}
-        </button>
-        <div className="header_div_login">
-          <NavLink to="/loginForm">
-            <button className="verify-btn">Login</button>
+      <header className="evvap-header">
+        <img
+            src="/images/logo/EVAAP_LOGO.png"
+            alt="evvap"
+            className="evvap-logo"
+        />
+        <nav>
+          <NavLink to="/" activeClassName="active-link">Home</NavLink>
+          <NavLink to="/people" activeClassName="active-link">People</NavLink>
+          <NavLink to="/learning" activeClassName="active-link">Learning</NavLink>
+          <NavLink to="/jobs" activeClassName="active-link">Jobs</NavLink>
+          <NavLink to="/games" activeClassName="active-link">Games</NavLink>
+          <NavLink to="/app" activeClassName="active-link">Get the app</NavLink>
+          <NavLink to="/join" className="join-now" activeClassName="active-link">Join now</NavLink>
+          <NavLink to="/signin">
+            <button className="sign-in-btn">Sign in</button>
           </NavLink>
-          <NavLink to="/admin">
-          <button className="verify-btn">Help</button></NavLink>
-        </div>
-      </div>
-    </header>
+        </nav>
+      </header>
   );
 };
 
