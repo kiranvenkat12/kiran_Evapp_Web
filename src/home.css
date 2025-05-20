@@ -1,3 +1,4 @@
+
 .login-main {
   display: flex;
   justify-content: space-between;
@@ -157,34 +158,6 @@
 .home_verification_path_div2_link:hover {
   color: darkblue;
   text-decoration: underline;
-}
-
-.home_verification_path_div3 {
-  padding:  20px;
-  display: grid;
-  grid-template-columns: 3fr 3fr 3fr;
-  list-style: none;
-  align-content: center;
-  padding: 2px;
-  margin-top: 30px;
-}
-.home_verification_path_div3 li {
-  width: auto;
-}
-.home_verification_path_div3 li img {
-  width: 50%;
-  height: 50%;
-  border-radius: 20px;
-  aspect-ratio: 3/3;
-  align-content: center;
-  margin-left: 20%;
-}
-.home_verification_path_div3 li p {
-  text-align: justify;
-  font-size: small;
-  align-items: center;
-  margin-top: 30px;
-  padding: 4%;
 }
 .cards-container1{
   height: 450px;
@@ -380,3 +353,65 @@
   height: auto;
   object-fit: cover;
 }
+.heading-text{
+  font-size: 30px;
+  margin-left: 10%;
+  margin-top: 80px;
+  color: #555555;
+  z-index: 2;
+}
+.image-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100vh; /* Adjust as needed */
+  overflow: hidden;
+}
+
+.lastimage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.background-section {
+  background-image: url(./assets/Components/header_images/last.png); /* Replace with your image path */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100vh; /* Adjust height as needed */
+  position: relative;
+  box-shadow: 0px -50px 50px -20px rgba(255, 255, 255, 0.8); /* Only at the top */
+
+}
+
+.heading-text {
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  max-width: 80%;
+  z-index: 2;
+  color: #616161;
+  font-weight: bold;
+}
+
+.start-btn {
+  margin-left: 12%;
+  padding: 0.6rem 1.2rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  z-index: 2;
+}
+.top-opacity-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 200px; /* Adjust based on how much opacity you want */
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0));
+  z-index: 1;
+  pointer-events: none; /* So it doesn't block clicks */
+}
+

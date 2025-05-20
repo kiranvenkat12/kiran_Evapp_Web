@@ -1,14 +1,10 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Link } from "react-router-dom";
 import bannerImg from "./assets/Components/header_images/verification_imges/employee verification.jpg";
-import serviceImg1 from "./assets/Components/header_images/verification_imges/laptop image.avif";
-import serviceImg2 from "./assets/Components/header_images/verification_imges/time picture image.avif";
-import serviceImg3 from "./assets/Components/header_images/verification_imges/fraud image.webp";
 import Mainimage from "./assets/Components/header_images/mainimg.png";
 import { FaHandshake } from "react-icons/fa6";
 import { FaMagnifyingGlassPlus } from "react-icons/fa6";
 import { IoManSharp } from "react-icons/io5";
-
 
 import "./home.css";
 
@@ -134,56 +130,18 @@ const Home = () => {
             Need an immediate verification ?
           </Link>
         </div>
+    <div>
+      <h1 className="heading-text">
+        Enterprise-grade security. Verified degrees. Trusted, authentic credentials.
+      </h1>
+      <button className="start-btn">Get started</button>
+      <div className="background-section">
+        <div className="top-opacity-overlay"></div>
 
-
-
-
-
-
-        <div className="home_verification_path_div3">
-          <li>
-            <img src={serviceImg1} alt="home_service_img"/>
-            <p>
-              <b>Open 24/7</b> <br/>
-              Our online Verification Services are available to you 24/7.That’s
-              why we offer 24/7 verification services for both candidates and
-              employers. Whether you need to verify a job applicant’s credentials,
-              employment history, or qualifications, or confirm details about
-              potential employees, our team is always available to provide
-              reliable, real-time verification. We ensure that all requests are
-              handled promptly and securely, giving you peace of mind at any hour
-              of the day or night
-            </p>
-          </li>
-          <li>
-            <img src={serviceImg2} alt="home_service_img"/>
-            <p>
-              <b> Get instant results</b> <br/>
-              we know that time is valuable. That’s why we partner with The
-              Clearinghouse to provide instant, up-to-date verifications for both
-              candidates and employers. Our system ensures that you receive
-              accurate, real-time results, helping your business save time and
-              make faster, more informed decisions. Whether you need to verify
-              employment, qualifications, or credentials, you can count on
-              immediate access to the most current data, available 24/7
-            </p>
-          </li>
-          <li>
-            <img src={serviceImg3} alt="home_service_img"/>
-            <p>
-              <b>Reduce credentials fraud </b> <br/>
-              We help you safeguard your business against credentials fraud by
-              ensuring diploma, enrollment, and degree authenticity. We understand
-              the importance of confidentiality and handle all candidate
-              verification requests with the highest level of security. Whether
-              you re looking to confirm work experience, educational credentials,
-              or professional licenses, our service provides a trusted solution to
-              help you make the best hiring decisions
-            </p>
-          </li>
-        </div>
       </div>
-        </>
+    </div>
+  </div>
+      </>
   );
 };
 
