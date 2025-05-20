@@ -1,4 +1,3 @@
-import React from 'react';
 import './fotter.css';
 
 import EVEAP_logo from '../../../public/images/logo/EVAAP_LOGO.png';
@@ -6,105 +5,57 @@ import Twitter_logo from '../../../public/images/logo/twitter.png';
 import Instagram_logo from '../../../public/images/logo/instagram-circle.png';
 import LinkedIn_logo from '../../../public/images/logo/linkedin-circled.png';
 
-const Footer = () => { 
-    return(
-        <div className="fotter">
-         <div className="fotter2">
-          <a href="#">
-            <img
-              className="evaap-logo-2-1-ai-brush-removebg-8-nqsg-4-zr-222"
-              src={EVEAP_logo}
-              alt="EVEAP Logo"
-            />
-          </a>
-         
-            <div className="contact-us4">
-              <div className="contact-us5"><b>Contact Us:</b></div>
-               <a href="https://maps.app.goo.gl/AZg1Rxsktv8cs1Nq5">
-             
-                prashanthi hills <br />
-                meerpet pincode-500058
-             
-                 Hyderabad, <br />
-                Telangana,India
-             
-               </a>
-              </div>
-           <div>
-         <ul className="fotter-quickLink-ul">
-              <div className="quick-links2"><b>Quick Links:</b> </div>
-              <li>
-              <a href="">
-                  Home
-              </a>
-              </li>
-              <li>
-              <a href="">
-              Contact Us
-              </a>
-              </li>
-              <li>
-              <a href="">
-              About Us
-              </a>
-              </li>
-              <li>
-              <a href="">
-              Our Services
-              </a>
-              </li>
-          </ul>
-         </div>
-          
-          <ul className ="fotter-tools-ul">
-            
-            <div className="tools">
-              <div className="tools2"><b>Tools:</b></div>
-            </div>
-            
-            <li>
-            <a href="https://www.example.com">
-                FAQs
-              </a>
-            </li>
-            <li>
-            <a href="https://www.example.com">
-                Carrer
-              </a>
-            </li>
-            <li>
-            <a href="https://www.example.com">
-                Announces
-              </a>
-            </li>
-          </ul>
-         
-          <ul className="follow-us-ul"> 
-          <div className="follow-us">
-            <div className="follow-us2"><b>Follow Us:</b></div>
-          </div>
+const Footer = () => {
+    const currentYear = new Date().getFullYear();
 
-            <li className="follow-us-ul-li">
-              <a href="https://www.instagram.com/evaap_2024" target="_blank">
-                <img className="instagram-circle2" src={Instagram_logo} />
-              </a>
-            </li>
-            <li className="follow-us-ul-li">
-              <a
-                href="https://www.linkedin.com/in/evaap-3a2965340/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
-                target="_blank"
-              >
-                <img className="linked-in-circled2" src={LinkedIn_logo} />
-              </a>
-            </li>
-            <li className="follow-us-ul-li">
-              <a href="https://x.com/evvap415664?t=L4ihkZ-4E8FNY8k8RkY9Bg" target="_blank">
-                <img className="twitter2" src={Twitter_logo} />
-              </a>
-            </li>
-          </ul>
-          </div>
-      </div>
+    return(
+        <>
+            <div className="footer">
+                <img src={EVEAP_logo} alt="EVEAP_logo" className="logo"/>
+
+
+                <div className="text-content1">
+                    <ul className="ul">
+                        <li className="main-text">Contact us</li>
+                        <li className="sub-text">Prashanthi hills</li>
+                        <li className="sub-text">meerpet pincode-500058 Hyderabad</li>
+                        <li className="sub-text">Telangana</li>
+                    </ul>
+                </div>
+
+                    <div className="text-content2">
+                        <ul className="ul">
+                            <li className="main-text">Quick links</li>
+                            <li className="sub-text">Home</li>
+                            <li className="sub-text">Contact Us</li>
+                            <li className="sub-text">Abount Us</li>
+                            <li className="sub-text">Our Services</li>
+                        </ul>
+                    </div>
+
+                        <div className="text-content3">
+                            <ul className="ul">
+                                <li className="main-text">Tools</li>
+                                <li className="sub-text">FAQs</li>
+                                <li className="sub-text">Carrer</li>
+                                <li className="sub-text">Announces</li>
+                            </ul>
+                        </div>
+
+                <div className="text-content4">
+                    <ul className="ul">
+                        <li ><img src={Twitter_logo}  className="img-text" /></li>
+                        <li ><img src={Instagram_logo} className="img-text"/></li>
+                        <li ><img src={LinkedIn_logo}  className="img-text"/></li>
+                    </ul>
+                </div>
+
+                </div>
+            <div className="copyright">
+                &copy; {currentYear} Hiscope Enterprices. All rights reserved.
+
+            </div>
+        </>
 
     )
 }
