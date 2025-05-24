@@ -62,7 +62,7 @@ export default function OurServices() {
         </section>
 
         <section className="app-overview-section">
-          <h2 className="section-title">Why Download Our App?</h2>
+          <h2 className="section-title"> Download Our App?</h2>
           <p className="section-intro">
             Our mobile and web apps are built to streamline and simplify the verification process for all stakeholders — whether you're an employer, HR manager, or job candidate.
           </p>

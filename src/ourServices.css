@@ -99,7 +99,7 @@
 .cta-banner {
   margin-top: 2rem;
   padding: 2rem;
-  background-color: #1e3a8a;
+  background-color: RGB(191, 219, 254);
   color: #fff;
   border-radius: 1rem;
 }
@@ -107,16 +107,18 @@
 .cta-banner h3 {
   font-size: 1.75rem;
   margin-bottom: 0.5rem;
+  color: #3c3c3c;
 }
 
 .cta-banner p {
   font-size: 1.1rem;
   margin-bottom: 1.5rem;
+  color: #3c3c3c;
 }
 
 .download-button {
-  background-color: #fbbf24;
-  color: #1e3a8a;
+  background-color: RGB(59, 130, 246);
+  color: #ffffff;
   border: none;
   padding: 0.75rem 1.5rem;
   font-size: 1rem;
