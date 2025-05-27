@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./CandidateDashboard.css";
+import "./CandidateDashBoard.css";
 import {
     FaUserCircle,
     FaCheckCircle,
