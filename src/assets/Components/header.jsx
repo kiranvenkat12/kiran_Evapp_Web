@@ -11,7 +11,7 @@ const Header = () => {
         />
         <nav>
           <NavLink to="/" activeClassName="active-link">Home</NavLink>
-          <NavLink to="/aboutUsPage" activeClassName="active-link">About us</NavLink>
+          <NavLink to="/CandidateDashboard" activeClassName="active-link">About us</NavLink>
           <NavLink to="/contact_usPage" activeClassName="active-link">Contact us</NavLink>
           <NavLink to="/ourServices" activeClassName="active-link">Our Services</NavLink>
           <NavLink to="/founderPage" activeClassName="active-link">Our Founders</NavLink>
