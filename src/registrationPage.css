@@ -47,9 +47,9 @@ body {
   align-items: flex-start;
 }
 
-.profile-image {
-  flex: 1;
-}
+/*.profile-image {*/
+/*  flex: 1;*/
+/*}*/
 
 .profile-photo {
   max-width: 100%;
