@@ -75,6 +75,7 @@ export default function CandidateDashboard() {
                                     <span className={`doc-status ${doc.status === "Verified" ? "verified" : "pending"}`}>
                                 {doc.status}
                             </span>
+
                                 </div>
                             ))}
                         </div>

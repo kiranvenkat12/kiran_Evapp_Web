@@ -10,11 +10,12 @@ import Home from "./home";
 import SignupForm from "./registrationPage";
 import ContactUs from "./contact_usPage";
 import FounderPage from "./founderPage";
+import LoginApp from "./assets/loginApp1.jsx";
 // import LoginForm from "./loginForm";
 import CandidatePage from "./assets/Components/candidatePage";
 import OurServices from "./ourServices";
 import Admin from "./admin"
-import CandidateDashboard from "./CandidateDashboard";
+import EmployerDashboard from "./assets/employerDashboard.jsx";
 
 
 function App() {
@@ -28,7 +29,9 @@ function App() {
         <Route path="/registrationPage" element={<SignupForm />} />
         <Route path="/contact_usPage" element={<ContactUs />} />
         <Route path="/founderPage" element={<FounderPage />} />
-         <Route path="/CandidateDashboard" element={< CandidateDashboard/>} />
+
+         <Route path="/loginApp1" element={<LoginApp />} />
+        <Route path="/employerDashboard" element={<EmployerDashboard />} />
         <Route path="/candidatePage" element={<CandidatePage />} />
         <Route path="/admin" element={<Admin />} />
       </Routes>
