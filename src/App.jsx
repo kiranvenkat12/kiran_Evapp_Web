@@ -16,6 +16,7 @@ import CandidatePage from "./assets/Components/candidatePage";
 import OurServices from "./ourServices";
 import Admin from "./admin"
 import EmployerDashboard from "./assets/employerDashboard.jsx";
+import CandidateDashboard from "./CandidateDashboard.jsx";
 
 
 function App() {
@@ -29,7 +30,7 @@ function App() {
         <Route path="/registrationPage" element={<SignupForm />} />
         <Route path="/contact_usPage" element={<ContactUs />} />
         <Route path="/founderPage" element={<FounderPage />} />
-
+        <Route path="/CandidateDashboard" element={<CandidateDashboard />} />
          <Route path="/loginApp1" element={<LoginApp />} />
         <Route path="/employerDashboard" element={<EmployerDashboard />} />
         <Route path="/candidatePage" element={<CandidatePage />} />
