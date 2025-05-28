@@ -1,251 +1,393 @@
+/* Color Tokens */
+:root {
+    --blue-50: rgb(239, 246, 255);
+    --blue-100: rgb(219, 234, 254);
+    --blue-200: rgb(191, 219, 254);
+    --blue-500: rgb(59, 130, 246);
+    --blue-600: rgb(37, 99, 235);
+    --blue-700: rgb(29, 78, 216);
+    --blue-800: rgb(30, 64, 175);
+    --blue-900: rgb(30, 58, 138);
+    --gray-700: rgb(55, 65, 81);
+}
+
 /* Layout */
 .dashboard-container {
     display: flex;
-    min-height: 100vh;
-    font-family: 'Segoe UI', sans-serif;
-    background-color: #f7f9fc;
+    height: 100vh;
+    background-color: var(--blue-50);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 /* Sidebar */
 .sidebar {
     width: 250px;
-    background-color: #152a50;
-    color: white;
-    padding: 1.5rem;
-    display: flex;
-    flex-direction: column;
+    transition: all 0.3s ease;
+    position: relative;
+    background-color: #f8f9fa;
+    padding: 1rem;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
 }
 
-.logo {
-    font-size: 1.8rem;
+.sidebar.open {
+    left: 0;
+}
+
+.sidebar-title {
+    color: var(--blue-900);
+    font-size: 1.5rem;
     margin-bottom: 2rem;
+    text-align: center;
 }
 
-.nav-links a {
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    padding: 0.75rem 1rem;
+    color: var(--gray-700);
+    cursor: pointer;
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
+    transition: background-color 0.2s;
+}
+
+.sidebar ul li:hover {
+    background-color: var(--blue-100);
+}
+
+.sidebar ul li.active {
+    background-color: var(--blue-500);
     color: white;
-    display: flex;
-    align-items: center;
-    padding: 0.75rem 0;
-    text-decoration: none;
-    font-size: 1rem;
-    gap: 10px;
-    transition: background 0.2s;
 }
 
-.nav-links a:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-    border-radius: 5px;
-}
+/* Toggle Button */
+
 
 /* Main Content */
-.main-content {
-    flex: 1;
+.dashboard-content {
+    flex-grow: 1;
     padding: 2rem;
+    background-color: var(--blue-50);
 }
 
-/* Topbar */
-.topbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 2rem;
+.dashboard-content h1 {
+    color: var(--blue-900);
+    margin-bottom: 1rem;
 }
 
-.user-info {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-/* Profile Section */
-.profile-section .profile-card {
-    display: flex;
-    gap: 1rem;
-    background: white;
-    padding: 1.5rem;
+.content-box {
+    background-color: var(--blue-100);
+    padding: 2rem;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    color: var(--gray-700);
 }
-.profile-card {
+/*profile page css*/
+.profile-content {
     display: flex;
+    flex-direction: column;
     gap: 2rem;
-    background: #fff;
-    padding: 1.5rem;
-    border-radius: 12px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-    align-items: center;
-    flex-wrap: wrap;
+}
+
+.profile-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 2rem;
 }
 
 .profile-image {
     width: 100px;
     height: 100px;
     border-radius: 50%;
-    object-fit: cover;
-    border: 2px solid #ccc;
 }
 
-/*.profile-details {*/
-/*    flex: 1;*/
-/*    min-width: 250px;*/
-/*}*/
-
-.editable-field {
-    margin: 1rem 0;
+.profile-header h2 {
+    margin: 0 0 0.5rem 0;
+    color: var(--blue-900);
 }
 
-.email-edit {
-    display: flex;
-    gap: 0.5rem;
-    align-items: center;
+.profile-header p {
+    margin: 0.25rem 0;
+    color: var(--gray-700);
 }
 
-.email-edit input {
-    padding: 0.5rem;
-    font-size: 0.95rem;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    flex: 1;
-}
-
-.save-btn {
-    padding: 0.45rem 0.75rem;
-    background-color: #152a50;
-    color: white;
-    border: none;
-    border-radius: 6px;
-    font-size: 0.9rem;
-    cursor: pointer;
-}
-
-.save-btn:hover {
-    background-color: #1e3b75;
-}
-
-.upload-progress-box {
-    margin-top: 2rem;
-    background: #fff;
-    padding: 1.5rem;
-    border-radius: 10px;
-    box-shadow: 0 0 6px rgba(0, 0, 0, 0.05);
-}
-
-.upload-progress-box h4 {
+.profile-extra h3 {
     margin-bottom: 0.5rem;
+    color: var(--blue-700);
+}
+
+.progress-bar-container {
+    background-color: var(--blue-100);
+    height: 10px;
+    border-radius: 5px;
+    width: 100%;
 }
 
 .progress-bar {
-    background: #e0e0e0;
-    height: 10px;
-    border-radius: 5px;
-    overflow: hidden;
-    margin: 0.5rem 0;
-}
-
-.progress {
     height: 100%;
-    background: #4caf50;
-    transition: width 0.4s ease;
+    background-color: var(--blue-600);
+    border-radius: 5px;
 }
+/*document page css*/
+/* ===== Document Tab Styling ===== */
 
-
-/* Status Tracker */
-.status-tracker {
+.documents-content {
     display: flex;
-    gap: 1rem;
-    margin-top: 1rem;
+    flex-direction: column;
+    gap: 3rem;
+    padding: 1rem 0;
 }
 
-.step {
-    padding: 1rem;
-    flex: 1;
-    background: #e0e6ed;
-    text-align: center;
-    border-radius: 8px;
-    position: relative;
+.section h2 {
+    margin-bottom: 1rem;
+    color: rgb(30, 58, 138); /* blue-900 */
 }
 
-.step.complete {
-    background: #4caf50;
-    color: white;
-}
-
-.step.active {
-    background: #ffc107;
-    color: black;
-}
-
-/* Documents Section */
-.documents-list {
-    display: flex;
-    gap: 1rem;
-    margin-top: 1rem;
+.doc-card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
 }
 
 .doc-card {
-    background: white;
+    background-color: rgb(239, 246, 255); /* blue-50 */
+    border: 1px solid rgb(191, 219, 254); /* blue-200 */
+    border-left: 6px solid rgb(59, 130, 246); /* blue-500 */
     padding: 1rem;
-    border-radius: 8px;
-    text-align: center;
-    flex: 1;
-    box-shadow: 0 0 8px rgba(0,0,0,0.05);
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.status {
+.doc-card.remaining {
+    border-left-color: rgb(30, 64, 175); /* blue-800 */
+}
+
+.doc-name {
+    font-weight: 600;
+    color: rgb(55, 65, 81); /* gray-700 */
+}
+
+.doc-status {
+    padding: 0.3rem 0.6rem;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-transform: capitalize;
+}
+
+.doc-status.verified {
+    background-color: rgb(219, 234, 254); /* blue-100 */
+    color: rgb(29, 78, 216); /* blue-700 */
+}
+
+.doc-status.pending {
+    background-color: #ffe6b3;
+    color: #b36b00;
+}
+
+.upload-btn {
+    background-color: rgb(37, 99, 235); /* blue-600 */
+    color: #fff;
+    border: none;
+    padding: 0.4rem 0.9rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.2s ease;
+}
+
+.upload-btn:hover {
+    background-color: rgb(29, 78, 216); /* blue-700 */
+}
+
+/*Verification Status*/
+.verification-status {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+/* Summary Cards */
+.status-cards {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.status-card {
+    flex: 1;
+    padding: 1rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    text-align: center;
+}
+
+.status-card h3 {
+    font-size: 2rem;
+    margin: 0;
+}
+
+.status-card p {
     margin-top: 0.5rem;
+    color: rgb(55, 65, 81); /* gray-700 */
+}
+
+.status-card.verified {
+    background-color: rgb(219, 234, 254); /* blue-100 */
+    color: rgb(29, 78, 216); /* blue-700 */
+}
+
+.status-card.pending {
+    background-color: #fff3cd;
+    color: #856404;
+}
+
+.status-card.total {
+    background-color: rgb(239, 246, 255); /* blue-50 */
+    color: rgb(30, 58, 138); /* blue-900 */
+}
+
+/* Progress */
+.progress-section {
+    width: 100%;
+}
+
+.progress-bar-container {
+    background-color: rgb(191, 219, 254); /* blue-200 */
+    border-radius: 10px;
+    height: 14px;
+    margin-top: 0.5rem;
+    margin-bottom: 0.3rem;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    background-color: rgb(37, 99, 235); /* blue-600 */
+}
+
+/* Table */
+.document-status-table {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.document-status-table table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+.document-status-table th,
+.document-status-table td {
+    padding: 0.8rem;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.document-status-table th {
+    background-color: rgb(219, 234, 254); /* blue-100 */
+    color: rgb(30, 58, 138); /* blue-900 */
+}
+
+.document-status-table td.verified {
+    color: rgb(29, 78, 216);
     font-weight: bold;
 }
 
-.status.approved {
-    color: green;
+.document-status-table td.pending {
+    color: #b36b00;
+    font-weight: bold;
 }
+/*setting css */
 
-.status.pending {
-    color: orange;
-}
-
-/* Notifications */
-.notifications-list {
-    margin-top: 1rem;
-    list-style: disc;
-    padding-left: 1.5rem;
-}
-
-@media (max-width: 768px) {
-    .dashboard-container {
-        flex-direction: column;
-    }
-
-    .sidebar {
-        width: 100%;
-        flex-direction: row;
-        overflow-x: auto;
-    }
-
-    .main-content {
-        padding: 1rem;
-    }
-
-    .documents-list, .status-tracker {
-        flex-direction: column;
-    }
-}
-.nav-links button {
-    background: none;
-    border: none;
-    color: white;
+.settings-page {
     display: flex;
-    align-items: center;
-    padding: 0.75rem 0;
+    flex-direction: column;
+    gap: 1rem;
+    color: rgb(30, 58, 138); /* blue-900 */
+}
+
+.settings-toggle {
+    background-color: rgb(219, 234, 254); /* blue-100 */
+    color: rgb(29, 78, 216); /* blue-700 */
+    padding: 0.8rem 1rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
     text-align: left;
     width: 100%;
-    font-size: 1rem;
-    gap: 10px;
-    cursor: pointer;
-    transition: background 0.2s;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: background 0.3s ease;
 }
 
-.nav-links button:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-    border-radius: 5px;
+.settings-toggle:hover {
+    background-color: rgb(191, 219, 254); /* blue-200 */
+}
+
+.settings-section {
+    background-color: rgb(239, 246, 255); /* blue-50 */
+    padding: 1rem 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    margin-top: 0.5rem;
+}
+
+.settings-section label {
+    display: block;
+    margin-bottom: 1rem;
+    color: rgb(55, 65, 81); /* gray-700 */
+}
+
+.settings-section input[type="text"],
+.settings-section input[type="email"],
+.settings-section input[type="tel"],
+.settings-section input[type="password"],
+.settings-section input[type="file"] {
+    width: 100%;
+    padding: 0.5rem;
+    margin-top: 0.3rem;
+    border-radius: 6px;
+    border: 1px solid rgb(191, 219, 254); /* blue-200 */
+    background-color: white;
+}
+
+.save-button {
+    background-color: rgb(59, 130, 246); /* blue-500 */
+    color: white;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.save-button:hover {
+    background-color: rgb(37, 99, 235); /* blue-600 */
+}
+
+.danger-zone {
+    border-top: 2px solid rgb(191, 219, 254);
+    margin-top: 1rem;
+}
+
+.danger-button {
+    background-color: #f87171;
+    color: white;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 6px;
+    margin-right: 1rem;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.danger-button:hover {
+    background-color: #dc2626;
 }
