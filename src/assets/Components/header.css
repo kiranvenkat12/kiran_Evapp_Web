@@ -1,47 +1,129 @@
+:root {
+  --primary-color: #0a66c2;
+  --hover-bg: #dff9fb;
+  --text-color: #3c3c3c;
+  --font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-family);
+  background-color: #fff;
+  color: var(--text-color);
+}
+
 .evvap-header {
   display: flex;
-  /*justify-content: space-between;*/
-  padding: 20px 40px;
+  justify-content: space-between;
   align-items: center;
-  margin-left: 15%;
-  gap: 250px;
+  padding: 16px 24px;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
-.evvap-logo {
+.evvap-logo img {
   width: 100px;
+  height: auto;
 }
 
-.evvap-header nav {
+.hamburger {
+  font-size: 28px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: none;
+  color: var(--primary-color);
+}
+
+.nav-links {
   display: flex;
-  gap: 40px;
   align-items: center;
+  gap: 20px;
 }
 
-.evvap-header a {
+.nav-links a {
   text-decoration: none;
-  color: #3c3c3c;
+  color: var(--text-color);
   font-size: 14px;
-}
-.evvap-header a:hover{
-  color:black;
+  padding: 8px;
+  transition: color 0.3s ease;
 }
 
-.join-now {
+.nav-links a:hover,
+.active-link {
+  color: var(--primary-color);
   font-weight: bold;
+  border-bottom: 2px solid var(--primary-color);
 }
+
 .sign-in-btn {
   padding: 8px 16px;
-  border: 1px solid #0a66c2;
-  color: #0a66c2;
+  border: 1px solid var(--primary-color);
+  color: var(--primary-color);
   border-radius: 24px;
   background: none;
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
-.sign-in-btn:hover{
-  background-color: #dff9fb;
+
+.sign-in-btn:hover {
+  background-color: var(--hover-bg);
 }
-.active-link {
-  font-weight: bold;
-  color: #0a66c2;
-  border-bottom: 2px solid #0a66c2;
+
+/* Tablet and Mobile */
+@media (max-width: 1199px) {
+  .hamburger {
+    display: block;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 70px;
+    right: 0;
+    background-color: #fff;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-in-out;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 0;
+  }
+
+  .nav-links.open {
+    max-height: 500px;
+    padding: 16px 24px;
+  }
+
+  .nav-links a {
+    display: block;
+    width: 100%;
+    padding: 12px 0;
+    font-size: 15px;
+  }
+
+  .sign-in-btn {
+    width: 100%;
+    text-align: center;
+    margin-top: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .evvap-logo img {
+    width: 80px;
+  }
+
+  .nav-links a {
+    font-size: 13px;
+  }
+
+  .sign-in-btn {
+    font-size: 13px;
+    padding: 6px 12px;
+  }
 }

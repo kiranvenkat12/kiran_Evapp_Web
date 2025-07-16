@@ -1,63 +1,90 @@
+// src/components/Footer.jsx
+import  { useState } from 'react';
 import './fotter.css';
-
-import EVEAP_logo from '../../../public/images/logo/EVAAP_LOGO.png';
-import Twitter_logo from '../../../public/images/logo/twitter.png';
-import Instagram_logo from '../../../public/images/logo/instagram-circle.png';
-import LinkedIn_logo from '../../../public/images/logo/linkedin-circled.png';
+import { FaFacebookF, FaTwitter, FaLinkedinIn, FaInstagram, FaArrowUp } from 'react-icons/fa';
 
 const Footer = () => {
-    const currentYear = new Date().getFullYear();
+    const [openSection, setOpenSection] = useState(null);
+    const toggleSection = (id) => setOpenSection(openSection === id ? null : id);
 
-    return(
-        <>
-            <div className="footer">
-                <img src={EVEAP_logo} alt="EVEAP_logo" className="logo"/>
+    const handleBackToTop = () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+
+    return (
+        <footer className="ev-footer">
+            <div className="footer-grid">
+                {/* Logo & Description */}
+                <div className="footer-col brand">
+                    <img src="/images/logo/EVAAP_LOGO.png" alt="EVVAAP Logo" className="footer-logo" />
 
 
-                <div className="text-content1">
-                    <ul className="ul">
-                        <li className="main-text">Contact us</li>
-                        <li className="sub-text">Prashanthi hills</li>
-                        <li className="sub-text">meerpet pincode-500058 Hyderabad</li>
-                        <li className="sub-text">Telangana</li>
+                </div>
+
+                {/* Navigation Sections */}
+                <div className="footer-col">
+                    <button className="footer-toggle" onClick={() => toggleSection('company')}>
+                        Company <span className={`arrow ${openSection === 'company' ? 'open' : ''}`}>⌄</span>
+                    </button>
+                    <ul className={`footer-links ${openSection === 'company' ? 'open' : ''}`}>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Press</a></li>
                     </ul>
                 </div>
 
-                    <div className="text-content2">
-                        <ul className="ul">
-                            <li className="main-text">Quick links</li>
-                            <li className="sub-text">Home</li>
-                            <li className="sub-text">Contact Us</li>
-                            <li className="sub-text">Abount Us</li>
-                            <li className="sub-text">Our Services</li>
-                        </ul>
-                    </div>
+                <div className="footer-col">
+                    <button className="footer-toggle" onClick={() => toggleSection('resources')}>
+                        Resources <span className={`arrow ${openSection === 'resources' ? 'open' : ''}`}>⌄</span>
+                    </button>
+                    <ul className={`footer-links ${openSection === 'resources' ? 'open' : ''}`}>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Support</a></li>
+                        <li><a href="#">Documentation</a></li>
+                    </ul>
+                </div>
 
-                        <div className="text-content3">
-                            <ul className="ul">
-                                <li className="main-text">Tools</li>
-                                <li className="sub-text">FAQs</li>
-                                <li className="sub-text">Carrer</li>
-                                <li className="sub-text">Announces</li>
-                            </ul>
+                {/* Newsletter Signup */}
+                <div className="footer-col newsletter">
+
+                    <form
+                        onSubmit={(e) => {
+                            e.preventDefault();
+                            alert("Subscribed successfully!");
+                            e.target.reset();
+                        }}
+                    >
+                        <div className="footer-contact">
+                            <p>1/23 Tech Park Rd, Hyderabad, IN</p>
+                            <a href="tel:+919999999999">+91 99999 99999</a>
+                            <a href="mailto:contact@evvaap.com">contact@evvaap.com</a>
                         </div>
-
-                <div className="text-content4">
-                    <ul className="ul">
-                        <li ><img src={Twitter_logo}  className="img-text" /></li>
-                        <li ><img src={Instagram_logo} className="img-text"/></li>
-                        <li ><img src={LinkedIn_logo}  className="img-text"/></li>
-                    </ul>
+                        <div className="footer-social">
+                            <a href="#"><FaFacebookF /></a>
+                            <a href="#"><FaTwitter /></a>
+                            <a href="#"><FaLinkedinIn /></a>
+                            <a href="#"><FaInstagram /></a>
+                        </div>
+                    </form>
                 </div>
-
-                </div>
-            <div className="copyright">
-                &copy; {currentYear} Hiscope Enterprices. All rights reserved.
-
             </div>
-        </>
 
-    )
-}
+            {/* Bottom Section */}
+            <div className="footer-bottom">
+                <p>&copy; {new Date().getFullYear()} EVVAAP. All rights reserved.</p>
+                <div className="footer-legal">
+                    <a href="#">Terms</a>
+                    <a href="#">Privacy</a>
+                    <a href="#">Cookies</a>
+                </div>
+            </div>
+
+            {/* Back to top button */}
+            <button className="back-to-top" onClick={handleBackToTop} aria-label="Back to top">
+                <FaArrowUp />
+            </button>
+        </footer>
+    );
+};
 
 export default Footer;
