@@ -21,6 +21,7 @@
 .login-left {
   flex: 1;
   min-width: 280px;
+  margin-left: 10%;
 }
 
 .login-left h1 {
@@ -43,6 +44,7 @@
   width: 100%;
   font-size: 1rem;
   transition: background 0.3s;
+  color: black;
 }
 
 .google-btn:hover,
@@ -142,6 +144,7 @@
   font-size: 0.9rem;
   cursor: pointer;
   transition: background 0.2s;
+  color: #4c4c4c;
 }
 
 .tag-btn:hover {
