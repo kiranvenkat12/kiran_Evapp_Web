@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import './EmployeeRegistration.css';
+import { useState } from 'react';
+import './employeeRegistration.css';
 
 const steps = ['Personal Info', 'Education', 'Professional', 'Documents', 'References', 'Consent'];
 
