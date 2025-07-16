@@ -7,7 +7,7 @@ import {
 import Header from "./assets/Components/header";
 import Fotter from "./assets/Components/fotter";
 import Home from "./home";
-import SignupForm from "./registrationPage";
+import SignupForm from "./employeeRegistration.jsx";
 import ContactUs from "./contact_usPage";
 import FounderPage from "./founderPage";
 import LoginApp from "./assets/loginApp1.jsx";
@@ -16,7 +16,7 @@ import CandidatePage from "./assets/Components/candidatePage";
 import OurServices from "./ourServices";
 import Admin from "./admin"
 import EmployerDashboard from "./assets/employerDashboard.jsx";
-import CandidateDashboard from "./CandidateDashboard.jsx";
+import CandidateDashboard from "./assets/pages/CandidateDashboard.jsx";
 
 
 function App() {
