@@ -1,8 +1,6 @@
-import React, { useState } from 'react';
-import './employerDashboard.css'; // Import the CSS file
-import VerifyEmployee from './VerifyEmployee';
-import CompanyProfile from './CompanyProfile';
 
+import React, { useState, useEffect } from 'react';
+import './employerDashboard.css'; // Import the CSS file
 import {
     Home,
     Plus,
@@ -15,27 +13,68 @@ import {
     HelpCircle,
     Search,
     Filter,
-    // Download,
     Calendar,
     Eye,
     Edit,
     Trash2,
     CheckCircle,
-    // Clock,
-    // AlertCircle,
     User,
     Mail,
     Phone,
     MapPin,
     DollarSign,
-    ShieldCheck
-    // Briefcase
+    ShieldCheck,
+    Menu, // For sidebar toggle
+    X, // For sidebar close
+    Sun, // For dark mode
+    Moon // For dark mode
 } from 'lucide-react';
+
+// Placeholder for VerifyEmployee component (if not provided by user)
+const VerifyEmployee = () => (
+    <div className="placeholder-content">
+        <h1 className="placeholder-title">Verify Employee</h1>
+        <p className="placeholder-text">This section for employee verification is under development.</p>
+        <p className="placeholder-text">You can add your verification logic here.</p>
+    </div>
+);
+
+// Placeholder for CompanyProfile component (if not provided by user)
+const CompanyProfile = () => (
+    <div className="placeholder-content">
+        <h1 className="placeholder-title">Company Profile</h1>
+        <p className="placeholder-text">This section for company profile management is under development.</p>
+        <p className="placeholder-text">You can add your company profile forms and data here.</p>
+    </div>
+);
+
 
 export const EmployerDashboard = () => {
     const [activeMenu, setActiveMenu] = useState('dashboard');
-    // const [selectedJob, setSelectedJob] = useState(null);
     const [draggedCandidate, setDraggedCandidate] = useState(null);
+    const [sidebarOpen, setSidebarOpen] = useState(false); // State for mobile sidebar
+    const [isDarkMode, setIsDarkMode] = useState(
+        localStorage.getItem('theme') === 'dark'
+    );
+
+    useEffect(() => {
+        // Apply dark mode class to HTML element
+        if (isDarkMode) {
+            document.documentElement.classList.add('dark-mode');
+            localStorage.setItem('theme', 'dark');
+        } else {
+            document.documentElement.classList.remove('dark-mode');
+            localStorage.setItem('theme', 'light');
+        }
+    }, [isDarkMode]);
+
+    const toggleDarkMode = () => {
+        setIsDarkMode(prevMode => !prevMode);
+    };
+
+    const toggleSidebar = () => {
+        setSidebarOpen(prev => !prev);
+    };
 
     // Sample data
     const [jobs] = useState([
@@ -70,16 +109,12 @@ export const EmployerDashboard = () => {
         { id: 'messaging', label: 'Messaging', icon: MessageSquare },
         { id: 'analytics', label: 'Analytics', icon: BarChart3 },
         { id: 'support', label: 'Support', icon: HelpCircle },
-
     ];
 
     const handleDragStart = (e, candidate, column) => {
         setDraggedCandidate({ candidate, sourceColumn: column });
         e.dataTransfer.effectAllowed = 'move';
     };
-
-
-
 
     const handleDragOver = (e) => {
         e.preventDefault();
@@ -101,11 +136,9 @@ export const EmployerDashboard = () => {
         setDraggedCandidate(null);
     };
 
-
-
     const renderDashboard = () => (
         <div className="dashboard-content">
-            <div className="dashboard-header">
+            <div className="dashboard-header-main">
                 <h1 className="dashboard-title">Employer Dashboard</h1>
                 <p className="dashboard-subtitle">Manage your hiring process efficiently</p>
             </div>
@@ -175,29 +208,29 @@ export const EmployerDashboard = () => {
                                         draggable
                                         onDragStart={(e) => handleDragStart(e, candidate, column)}
                                     >
-                                        <div className="candidate-header">
-                                            <div className="candidate-avatar">
+                                        <div className="candidate-header-kanban">
+                                            <div className="candidate-avatar-kanban">
                                                 <User size={20} />
                                             </div>
-                                            <div className="candidate-info">
-                                                <h4 className="candidate-name">{candidate.name}</h4>
-                                                <p className="candidate-position">{candidate.position}</p>
+                                            <div className="candidate-info-kanban">
+                                                <h4 className="candidate-name-kanban">{candidate.name}</h4>
+                                                <p className="candidate-position-kanban">{candidate.position}</p>
                                             </div>
                                             {candidate.verified && (
                                                 <CheckCircle className="verification-badge" size={16} />
                                             )}
                                         </div>
-                                        <div className="candidate-details">
-                                            <div className="candidate-detail">
+                                        <div className="candidate-details-kanban">
+                                            <div className="candidate-detail-kanban">
                                                 <Mail size={14} />
                                                 <span>{candidate.email}</span>
                                             </div>
-                                            <div className="candidate-detail">
+                                            <div className="candidate-detail-kanban">
                                                 <Phone size={14} />
                                                 <span>{candidate.phone}</span>
                                             </div>
                                         </div>
-                                        <div className="candidate-actions">
+                                        <div className="candidate-actions-kanban">
                                             <button className="action-btn action-btn-primary">View</button>
                                             <button className="action-btn action-btn-secondary">Message</button>
                                         </div>
@@ -210,8 +243,6 @@ export const EmployerDashboard = () => {
             </div>
         </div>
     );
-
-
 
     const renderShortlisting = () => {
         return (
@@ -254,36 +285,6 @@ export const EmployerDashboard = () => {
             </div>
         );
     };
-
-    // const renderCompanyProfile = () => (
-    //     <div className="profile-section">
-    //         <h1 className="section-title">Company Profile</h1>
-    //         <p className="section-subtitle">Manage your company information and branding.</p>
-    //
-    //         <form className="company-form">
-    //             <div className="form-group">
-    //                 <label className="form-label">Company Name</label>
-    //                 <input type="text" className="form-input" placeholder="e.g. Acme Corp" />
-    //             </div>
-    //
-    //             <div className="form-group">
-    //                 <label className="form-label">Website</label>
-    //                 <input type="text" className="form-input" placeholder="e.g. www.acme.com" />
-    //             </div>
-    //
-    //             <div className="form-group">
-    //                 <label className="form-label">About Company</label>
-    //                 <textarea className="form-textarea" rows="5" placeholder="Tell us about your company..."></textarea>
-    //             </div>
-    //
-    //             <div className="form-actions">
-    //                 <button type="submit" className="btn btn-primary">Save Changes</button>
-    //             </div>
-    //         </form>
-    //     </div>
-    // );
-    //
-
 
     const renderPostJob = () => (
         <div className="form-section">
@@ -405,8 +406,6 @@ export const EmployerDashboard = () => {
         </div>
     );
 
-
-
     const renderContent = () => {
         switch (activeMenu) {
             case 'dashboard':
@@ -454,15 +453,13 @@ export const EmployerDashboard = () => {
                     </div>
                 );
             case 'shortlist':
-                return renderShortlisting(); // 👈 Add this
+                return renderShortlisting();
 
             case 'company-profile':
                 return <CompanyProfile />;
 
             case 'verify-employee':
                 return <VerifyEmployee />;
-
-
 
             default:
                 return (
@@ -475,42 +472,81 @@ export const EmployerDashboard = () => {
     };
 
     return (
-        <div className="employer-dashboard">
+        <div className={`employer-container ${sidebarOpen ? 'sidebar-open' : ''}`}>
             {/* Sidebar */}
-            <div className="sidebar">
-                <div className="sidebar-header">
-                    <div className="logo">
-                        <Building className="logo-icon" />
-                        <span className="logo-text">Employer Portal</span>
+            <div className={`employer-sidebar ${sidebarOpen ? '' : 'employer-sidebar-closed'}`}>
+                <div className="employer-sidebar-header">
+                    <div className="employer-logo">
+                        <Building size={24} className="employer-logo-icon" />
+                        <h1 className="employer-logo-text">Employer Portal</h1>
                     </div>
+                    {/* Toggle button for sidebar on larger screens */}
+                    <button
+                        className="employer-sidebar-toggle"
+                        onClick={toggleSidebar}
+                        aria-label={sidebarOpen ? 'Collapse sidebar' : 'Expand sidebar'}
+                    >
+                        {sidebarOpen ? <X size={20} /> : <Menu size={20} />}
+                    </button>
                 </div>
 
-                <nav className="sidebar-nav">
+                <nav className="employer-nav">
                     {menuItems.map(item => {
                         const Icon = item.icon;
                         return (
                             <button
                                 key={item.id}
-                                className={`nav-item ${activeMenu === item.id ? 'active' : ''}`}
-                                onClick={() => setActiveMenu(item.id)}
+                                className={`employer-nav-item ${activeMenu === item.id ? 'employer-nav-active' : ''}`}
+                                onClick={() => {
+                                    setActiveMenu(item.id);
+                                    if (window.innerWidth <= 1024) { // Close sidebar on mobile after selection
+                                        setSidebarOpen(false);
+                                    }
+                                }}
                             >
-                                <Icon className="nav-icon" size={20} />
-                                <span className="nav-label">{item.label}</span>
+                                <Icon size={20} />
+                                <span>{item.label}</span>
                             </button>
                         );
                     })}
                 </nav>
             </div>
 
-
-
-
-
-
-
             {/* Main Content */}
-            <div className="main-content">
-                {renderContent()}
+            <div className="employer-main">
+                {/* Header */}
+                <div className="employer-header">
+                    <div className="employer-header-left">
+                        {/* Mobile menu button, visible only on smaller screens */}
+                        <button
+                            className="employer-mobile-menu"
+                            onClick={toggleSidebar}
+                            aria-label="Toggle sidebar"
+                        >
+                            <Menu size={20} />
+                        </button>
+                        <h1>Employer Dashboard</h1>
+                    </div>
+
+                    <div className="employer-header-right">
+                        <button
+                            className="employer-theme-toggle"
+                            onClick={toggleDarkMode}
+                        >
+                            {isDarkMode ? <Sun size={20} /> : <Moon size={20} />}
+                        </button>
+
+                        <div className="employer-user-menu">
+                            <div className="employer-user-avatar">E</div>
+                            <span>Employer User</span>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Content */}
+                <div className="employer-content">
+                    {renderContent()}
+                </div>
             </div>
         </div>
     );
