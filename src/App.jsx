@@ -14,7 +14,7 @@ import LoginApp from "./assets/loginApp1.jsx";
 // import LoginForm from "./loginForm";
 import CandidatePage from "./assets/Components/candidatePage";
 import OurServices from "./ourServices";
-import Admin from "./admin"
+import Admin from "./admin.jsx"
 import EmployerDashboard from "./assets/employerDashboard.jsx";
 import CandidateDashboard from "./assets/pages/CandidateDashboard.jsx";
 

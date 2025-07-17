@@ -1,73 +1,1324 @@
-.adminhead{
-    font-size: 30px;
-    color: rgb(0, 0, 0);
-    margin-top: 13%;
-    margin-left: 40%;
-}
-.admincontainer{
-    width: 60%;
-    height: 1100px;
-    background-color: rgb(255, 255, 255);
-    margin-top: 0%;
-    margin-left: 20%;
-    border-radius: 20px;
-    box-shadow: 0px 0px 5px rgb(209, 207, 207);
-    display: grid;
-    grid-template-columns: 1fr 3fr ;
-}
-.inadmincontainer{
-    width: 100%;
-    height: 300px;
-}
-.inadmincontainer2{
-    margin-top: 5%;
-    margin-left: auto;
-    width: 80%;
-    height: 300px;
-    border-radius: 20px;
-    border: 1px solid rgb(0, 0, 0);
-    box-shadow: 0px 0px 5px rgb(209, 207, 207);
-}
-.inadmincontainer3{
-    margin-top: 15%;
-    margin-left: auto;
-    width: 80%;
-    height: 450px;
-    border-radius: 20px;
-    border: 1px solid rgb(0, 0, 0);
-    box-shadow: 0px 0px 5px rgb(209, 207, 207);
-    grid-column-start: 2;
 
+/* adminDashboard.css - Scoped styles for AdminDashboard component */
+
+/* ====================================================================== */
+/* 1. Global Variables & Base Styles (Theme-aware)                      */
+/* These variables define your color palette and core values.        */
+/* Semantic variables are overridden in .admin-dark for themming.     */
+/* ====================================================================== */
+
+:root {
+    /* --- Base Colors (RGB values for flexibility, matching employerDashboard.css where applicable) --- */
+    --color-blue-50: 239, 246, 255; /* Matches employerDashboard.css background */
+    --color-blue-100: 219, 234, 254; /* Matches employerDashboard.css border and hover */
+    --color-blue-200: 191, 219, 254; /* Existing, good for lighter accents */
+
+    --color-blue-500: 59, 130, 246; /* Matches employerDashboard.css primary blue (logo-icon, active nav) */
+    --color-blue-600: 37, 99, 235; /* Matches employerDashboard.css button background */
+    --color-blue-700: 29, 78, 216; /* Existing, good for text accents */
+    --color-blue-800: 30, 64, 175; /* Existing, good for darker blues */
+    --color-blue-900: 30, 58, 138; /* Matches employerDashboard.css logo-text */
+
+    --color-gray-50: 249, 250, 251; /* Very light gray */
+    --color-gray-100: 243, 244, 246; /* Lightest gray for text in dark mode */
+    --color-gray-200: 229, 231, 235;
+    --color-gray-300: 156, 163, 175; /* Medium gray text */
+    --color-gray-400: 75, 85, 99;   /* Darker gray for borders/hover in dark */
+    --color-gray-500: 55, 65, 81;   /* Card background in dark */
+    --color-gray-700: 55, 65, 81;   /* Matches employerDashboard.css text color */
+    --color-gray-800: 31, 41, 55;   /* Card background in dark mode */
+    --color-gray-900: 17, 24, 39;   /* Page background in dark mode */
+
+    --color-red-100: 254, 226, 226;
+    --color-red-200: 254, 202, 202; /* Lighter red for subtle alerts */
+    --color-red-300: 252, 165, 165; /* Matches employerDashboard.css red icon background */
+    --color-red-500: 239, 68, 68;
+    --color-red-600: 220, 38, 38;
+    --color-red-900: 153, 27, 27;
+
+    --color-orange-100: 254, 243, 199; /* Matches employerDashboard.css yellow icon background */
+    --color-orange-500: 249, 115, 22;
+    --color-orange-900: 146, 64, 14;
+
+    --color-green-100: 220, 252, 231; /* Matches employerDashboard.css green icon background */
+    --color-green-500: 34, 197, 94;
+    --color-green-900: 22, 101, 52;
+
+    --color-purple-100: 237, 233, 254; /* Matches employerDashboard.css purple icon background */
+    --color-purple-500: 168, 85, 247;
+
+    /* --- Semantic Color Variables (Light Mode Defaults) --- */
+    --c-primary: rgb(var(--color-blue-500));
+    --c-primary-hover: rgb(var(--color-blue-600));
+    --c-secondary-bg: rgb(var(--color-blue-100));
+    --c-secondary-hover-bg: rgb(var(--color-blue-200));
+    --c-secondary-text: rgb(var(--color-blue-700));
+    --c-danger: rgb(var(--color-red-500));
+    --c-danger-hover: rgb(var(--color-red-600));
+    
+    
+
+    --c-text-default: rgb(var(--color-gray-700));
+    --c-text-light: rgb(var(--color-gray-700), 0.7); /* Lighter version for subtle text */
+    --c-text-heading: rgb(var(--color-blue-900));
+    --c-text-white: white;
+
+    --c-bg-page: rgb(var(--color-blue-50)); /* Matches employerDashboard.css background */
+    --c-bg-card: white; /* Matches employerDashboard.css sidebar background */
+    --c-bg-sidebar: white; /* Matches employerDashboard.css sidebar background */
+    --c-bg-table-header: rgb(var(--color-blue-50));
+    --c-bg-message-item-unread: rgb(var(--color-blue-50));
+    --c-bg-message-bubble-received: rgb(var(--color-blue-100));
+
+    --c-border-default: rgb(var(--color-blue-100)); /* Matches employerDashboard.css border */
+    --c-border-light: rgb(var(--color-blue-100));
+    --c-border-card-left: var(--c-primary); /* For verification/report cards */
+
+    /* Adjusted for smoother appearance - retained from previous turn */
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.05); /* Softer, more spread shadow */
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08); /* New medium shadow */
+
+    /* --- Spacing & Sizing (using rem for scalability) --- */
+    --space-xs: 0.25rem;  /* 4px */
+    --space-sm: 0.5rem;   /* 8px */
+    --space-md: 0.75rem;  /* 12px */
+    --space-lg: 1rem;     /* 16px */
+    --space-xl: 1.5rem;   /* 24px */
+    --space-2xl: 2rem;    /* 32px */
+
+    /* --- Other General --- */
+    --radius-sm: 0.25rem; /* 4px */
+    --radius-md: 0.375rem; /* 6px */
+    --radius-lg: 0.5rem;  /* 8px */
+    --transition-speed: 0.2s ease-out; /* Smoother transition */
 }
 
-.imgpos{
-    width: 200px;
-    height: 300px;
-  
+/* --- Dark Mode Overrides for Semantic Variables --- */
+.admin-container.admin-dark {
+    --c-text-default: rgb(var(--color-gray-100));
+    --c-text-light: rgb(var(--color-gray-300));
+    --c-text-heading: rgb(var(--color-gray-100));
+
+    --c-secondary-bg: rgb(var(--color-gray-500));
+    --c-secondary-hover-bg: rgb(var(--color-gray-400));
+    --c-secondary-text: rgb(var(--color-gray-200));
+
+    --c-bg-page: rgb(var(--color-gray-900));
+    --c-bg-card: rgb(var(--color-gray-800));
+    --c-bg-sidebar: rgb(var(--color-gray-800));
+    --c-bg-table-header: rgb(var(--color-gray-500));
+    --c-bg-message-item-unread: rgb(var(--color-gray-500));
+    --c-bg-message-bubble-received: rgb(var(--color-gray-500));
+
+    --c-border-default: rgb(var(--color-gray-500));
+    --c-border-light: rgb(var(--color-gray-500));
+    --c-border-card-left: var(--c-primary-hover); /* Darker primary for contrast */
+
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.2); /* Darker shadow for dark mode */
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
-#firstName{
-    margin-top: 4%;
-    margin-left: 4%;
-width: 350px;
+
+/* Base font size for rem calculation */
+html {
+    font-size: 16px;
 }
-.sub{
-    font-size: 30px;
-    margin-top: 0%;
-    margin-left: 115%;
+
+/* Basic reset */
+* {
+    box-sizing: border-box;
 }
-.adminbut{
-    background-color: #007bff;
-    color: #fff;
-    padding: 0.75rem 2rem;
+
+/* ====================================================================== */
+/* 2. Layout & Container                                                */
+/* Main structure of the dashboard.                                  */
+/* ====================================================================== */
+
+.admin-container {
+    display: flex;
+    height: 100vh;
+    background-color: var(--c-bg-page);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    color: var(--c-text-default);
+    overflow: hidden; /* Prevent body scroll */
+}
+
+/* ====================================================================== */
+/* 3. Sidebar                                                           */
+/* Navigation and sidebar specific styles.                           */
+/* ====================================================================== */
+
+.admin-sidebar {
+    width: 17.5rem; /* 280px */
+    background: var(--c-bg-sidebar);
+    border-right: 1px solid var(--c-border-default);
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.admin-sidebar-closed {
+    width: 5rem; /* 80px */
+}
+
+.admin-sidebar-header {
+    padding: var(--space-xl);
+    border-bottom: 1px solid var(--c-border-default);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-shrink: 0;
+}
+
+/* New: Admin Logo Styling */
+.admin-logo {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md); /* 12px */
+}
+
+.admin-logo-icon {
+    color: var(--c-primary); /* Matches employerDashboard.css logo-icon */
+}
+
+.admin-logo-text {
+    font-size: 1.25rem; /* 20px */
+    font-weight: 700;
+    color: var(--c-text-heading); /* Matches employerDashboard.css logo-text */
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+.admin-sidebar-header h1 { /* This rule is now less relevant for the logo text */
+    font-size: 1.25rem; /* 20px */
+    font-weight: 700;
+    color: var(--c-text-heading);
+    margin: 0;
+    white-space: nowrap; /* Prevent text wrapping when sidebar collapses */
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.admin-sidebar-toggle {
+    background: none;
     border: none;
-    border-radius: 5px;
-    width: 90%;
-    height: 50px;
-    font-size: 1.1rem;
     cursor: pointer;
-    transition: background-color 0.3s;
-    margin-left: 120%;
+    padding: var(--space-sm);
+    border-radius: var(--radius-md);
+    color: var(--c-text-default);
+    transition: background-color var(--transition-speed);
 }
-.adminbut:hover{
-    background-color: #0056b3;
+
+.admin-sidebar-toggle:hover {
+    background-color: var(--c-secondary-hover-bg);
+}
+
+.admin-nav {
+    padding: var(--space-lg) 0;
+    flex-grow: 1; /* Allow nav to take remaining space */
+    overflow-y: auto; /* Allow nav items to scroll if many */
+}
+
+.admin-nav-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    width: 100%;
+    padding: var(--space-md) var(--space-xl);
+    background: none;
+    border: none;
+    text-align: left;
+    cursor: pointer;
+    font-size: 0.875rem; /* 14px */
+    font-weight: 500;
+    color: var(--c-text-default);
+    transition: background-color var(--transition-speed), color var(--transition-speed);
+}
+
+.admin-nav-item:hover {
+    background-color: var(--c-secondary-hover-bg);
+    color: var(--c-secondary-text);
+}
+
+.admin-nav-active {
+    background-color: var(--c-primary);
+    color: var(--c-text-white);
+}
+
+.admin-nav-active:hover {
+    background-color: var(--c-primary-hover);
+    color: var(--c-text-white);
+}
+
+.admin-sidebar-closed .admin-nav-item span {
+    display: none; /* Hide text when sidebar is closed */
+}
+
+.admin-sidebar-closed .admin-sidebar-header .admin-logo-text { /* Hide logo text when sidebar is closed */
+    display: none;
+}
+
+/* ====================================================================== */
+/* 4. Main Content Area                                                 */
+/* Header, content area, and mobile menu.                            */
+/* ====================================================================== */
+
+.admin-main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; /* Prevent main content area from causing body scroll */
+}
+
+.admin-header {
+    background: var(--c-bg-card); /* Use card background for header */
+    padding: var(--space-lg) var(--space-2xl);
+    border-bottom: 1px solid var(--c-border-default);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-shrink: 0;
+}
+
+.admin-header-left {
+    display: flex;
+    align-items: center;
+    gap: var(--space-lg);
+}
+
+.admin-header-left h1 {
+    font-size: 1.5rem; /* 24px */
+    font-weight: 600;
+    color: var(--c-text-heading);
+    margin: 0;
+}
+
+.admin-mobile-menu {
+    display: none; /* Hidden by default on larger screens */
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: var(--space-sm);
+    border-radius: var(--radius-md);
+    color: var(--c-text-default);
+    transition: background-color var(--transition-speed);
+}
+
+.admin-mobile-menu:hover {
+    background-color: var(--c-secondary-hover-bg);
+}
+
+.admin-header-right {
+    display: flex;
+    align-items: center;
+    gap: var(--space-lg);
+}
+
+.admin-notification-btn,
+.admin-theme-toggle {
+    position: relative;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: var(--space-sm);
+    border-radius: var(--radius-md);
+    color: var(--c-text-default);
+    transition: background-color var(--transition-speed);
+}
+
+.admin-notification-btn:hover,
+.admin-theme-toggle:hover {
+    background-color: var(--c-secondary-hover-bg);
+}
+
+.admin-notification-badge {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: rgb(var(--color-red-500));
+    color: var(--c-text-white);
+    font-size: 0.75rem; /* 12px */
+    padding: 0.125rem 0.375rem; /* 2px 6px */
+    border-radius: 9999px;
+    min-width: 1.25rem; /* 20px */
+    text-align: center;
+}
+
+/* New: Notifications Dropdown Styles */
+.admin-notification-dropdown {
+    position: absolute;
+    top: calc(100% + var(--space-sm)); /* Position below bell icon */
+    right: var(--space-lg);
+    background-color: var(--c-bg-card);
+    border: 1px solid var(--c-border-default);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    width: 20rem; /* Adjust as needed */
+    z-index: 1001; /* Ensure it's above other content */
+    padding: var(--space-md);
+    display: flex;
+    flex-direction: column;
+}
+
+.admin-notification-dropdown .dropdown-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: var(--space-sm);
+    margin-bottom: var(--space-md);
+    border-bottom: 1px solid var(--c-border-light);
+}
+
+.admin-notification-dropdown .dropdown-header h4 {
+    margin: 0;
+    font-size: 1rem;
+    color: var(--c-text-heading);
+}
+
+.admin-notification-dropdown .clear-all-btn {
+    background: none;
+    border: none;
+    color: var(--c-secondary-text);
+    cursor: pointer;
+    font-size: 0.875rem;
+    transition: color var(--transition-speed);
+}
+
+.admin-notification-dropdown .clear-all-btn:hover {
+    color: var(--c-primary);
+}
+
+.admin-notification-dropdown .notification-list {
+    max-height: 15rem; /* Scrollable area for notifications */
+    overflow-y: auto;
+}
+
+.admin-notification-dropdown .notification-item {
+    padding: var(--space-sm);
+    border-radius: var(--radius-md);
+    margin-bottom: var(--space-sm);
+    font-size: 0.875rem;
+    line-height: 1.4;
+    transition: background-color var(--transition-speed);
+}
+
+.admin-notification-dropdown .notification-item:last-child {
+    margin-bottom: 0;
+}
+
+.admin-notification-dropdown .notification-item:hover {
+    background-color: var(--c-secondary-bg);
+}
+
+.admin-notification-dropdown .notification-item p {
+    margin: 0;
+    color: var(--c-text-default);
+}
+
+.admin-notification-dropdown .notification-item span {
+    font-size: 0.75rem;
+    color: var(--c-text-light);
+}
+
+.admin-notification-dropdown .notification-item-info {
+    background-color: rgb(var(--color-blue-50));
+    color: rgb(var(--color-blue-700));
+}
+.admin-notification-dropdown .notification-item-warning {
+    background-color: rgb(var(--color-orange-100));
+    color: rgb(var(--color-orange-900));
+}
+.admin-notification-dropdown .notification-item-alert {
+    background-color: rgb(var(--color-red-100));
+    color: rgb(var(--color-red-900));
+}
+
+.admin-notification-dropdown .no-notifications {
+    text-align: center;
+    color: var(--c-text-light);
+    padding: var(--space-md);
+}
+
+
+.admin-user-menu {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-sm) var(--space-lg);
+    background-color: var(--c-secondary-bg);
+    border-radius: var(--radius-lg);
+    cursor: pointer;
+    transition: background-color var(--transition-speed); /* Smooth hover */
+}
+
+.admin-user-menu:hover {
+    background-color: var(--c-secondary-hover-bg);
+}
+
+.admin-user-avatar {
+    width: 2rem; /* 32px */
+    height: 2rem;
+    background-color: var(--c-primary);
+    color: var(--c-text-white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 0.875rem; /* 14px */
+}
+
+.admin-content {
+    flex: 1;
+    overflow-y: auto; /* Allows scrolling within the content area */
+    padding: var(--space-2xl);
+}
+
+.admin-content-section {
+    max-width: 75rem; /* 1200px */
+    margin: 0 auto;
+}
+
+/* ====================================================================== */
+/* 5. Reusable UI Components                                            */
+/* Buttons, cards, tables, badges, etc.                              */
+/* ====================================================================== */
+
+/* Section Headers */
+.admin-section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--space-2xl);
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    gap: var(--space-lg); /* Gap between h2 and actions */
+}
+
+.admin-section-header h2 {
+    font-size: 1.875rem; /* 30px */
+    font-weight: 700;
+    color: var(--c-text-heading);
+    margin: 0;
+}
+
+.admin-header-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-lg);
+    flex-wrap: wrap;
+}
+
+/* New: Global Search Box on Dashboard */
+.admin-global-search {
+    flex-grow: 1; /* Allow it to take up more space */
+    max-width: 20rem; /* Limit width */
+}
+
+/* New: Quick Actions Card & Grid */
+.admin-card {
+    background: var(--c-bg-card);
+    padding: var(--space-xl);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    margin-bottom: var(--space-2xl);
+}
+
+.admin-quick-actions h3,
+.admin-chart-placeholder h3,
+.admin-recent-activity-log h3 {
+    font-size: 1.25rem; /* 20px */
+    font-weight: 600;
+    color: var(--c-text-heading);
+    margin: 0 0 var(--space-xl) 0;
+}
+
+.admin-quick-action-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr)); /* Min 160px width */
+    gap: var(--space-md);
+}
+
+.admin-btn-icon {
+    flex-direction: column; /* Stack icon and text */
+    text-align: center;
+    padding: var(--space-md);
+    gap: var(--space-sm);
+    height: auto; /* Allow height to adjust */
+}
+
+/* New: Chart Placeholder */
+.admin-chart-placeholder .chart-area {
+    background-color: var(--c-secondary-bg);
+    border-radius: var(--radius-md);
+    height: 15rem; /* Fixed height for visual consistency */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--c-text-light);
+    font-style: italic;
+    font-size: 0.9rem;
+}
+
+/* Buttons */
+.admin-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-sm) var(--space-lg);
+    border: none;
+    border-radius: var(--radius-md);
+    font-size: 0.875rem; /* 14px */
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color var(--transition-speed), transform 0.1s ease-out; /* Added transform for subtle click effect */
+    text-decoration: none;
+}
+
+.admin-btn:active {
+    transform: translateY(1px); /* Subtle press effect */
+}
+
+.admin-btn-primary {
+    background-color: var(--c-primary);
+    color: var(--c-text-white);
+}
+
+.admin-btn-primary:hover {
+    background-color: var(--c-primary-hover);
+}
+
+.admin-btn-secondary {
+    background-color: var(--c-secondary-bg);
+    color: var(--c-secondary-text);
+    border: 1px solid var(--c-border-default); /* Added a subtle border */
+}
+
+.admin-btn-secondary:hover {
+    background-color: var(--c-secondary-hover-bg);
+    border-color: rgb(var(--color-blue-200), 0.7); /* Slightly softer border on hover */
+}
+
+.admin-btn-danger {
+    background-color: var(--c-secondary-bg);
+    color:  rgb(224, 58, 58);
+}
+
+.admin-btn-danger:hover {
+    background-color: var(--c-danger-hover);
+}
+
+.admin-btn-small {
+    padding: var(--space-xs) var(--space-sm);
+    font-size: 0.75rem; /* 12px */
+}
+
+/* Stat Cards - Updated to match employerDashboard.css */
+.admin-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(15.625rem, 1fr)); /* 250px */
+    gap: var(--space-xl);
+    margin-bottom: var(--space-2xl);
+}
+
+.admin-stat-card {
+    background: var(--c-bg-card);
+    padding: var(--space-xl);
+    border-radius: var(--radius-lg); /* 12px */
+    border: 1px solid var(--c-border-default); /* Matches employerDashboard.css */
+    box-shadow: var(--shadow-sm); /* Using softer shadow */
+    display: flex;
+    align-items: center;
+    gap: var(--space-lg);
+    transition: transform 0.15s ease-out, box-shadow 0.15s ease-out; /* Smooth hover effect */
+}
+
+.admin-stat-card:hover {
+    transform: translateY(-3px); /* Lift effect */
+    box-shadow: var(--shadow-md); /* Slightly more prominent shadow on hover */
+}
+
+/* New: Stat Icon Wrapper - Matches employerDashboard.css */
+.admin-stat-icon-wrapper {
+    width: 3rem; /* 48px */
+    height: 3rem;
+    border-radius: var(--radius-lg); /* 12px */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Stat Icon Wrapper Background Colors - Matches employerDashboard.css */
+.admin-stat-icon-wrapper.admin-stat-icon-blue {
+    background-color: rgb(var(--color-blue-100)); /* Matches employerDashboard.css stat-icon-blue */
+}
+
+.admin-stat-icon-wrapper.admin-stat-icon-green {
+    background-color: rgb(var(--color-green-100)); /* Matches employerDashboard.css stat-icon-green */
+}
+
+.admin-stat-icon-wrapper.admin-stat-icon-yellow {
+    background-color: rgb(var(--color-orange-100)); /* Matches employerDashboard.css stat-icon-yellow */
+}
+
+.admin-stat-icon-wrapper.admin-stat-icon-purple {
+    background-color: rgb(var(--color-purple-100)); /* Matches employerDashboard.css stat-icon-purple */
+}
+
+/* Stat Icon Color - Matches employerDashboard.css */
+.admin-stat-icon-wrapper svg {
+    color: var(--c-primary); /* Matches employerDashboard.css stat-icon color */
+}
+
+
+.admin-stat-content h3 {
+    font-size: 2rem; /* 32px */
+    font-weight: 700;
+    color: var(--c-text-heading);
+    margin: 0;
+}
+
+.admin-stat-content p {
+    font-size: 0.875rem; /* 14px */
+    color: var(--c-text-light);
+    margin: 0;
+}
+
+/* Task Board */
+.admin-task-board {
+    background: var(--c-bg-card);
+    padding: var(--space-xl);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm); /* Using softer shadow */
+    margin-bottom: var(--space-2xl);
+}
+
+.admin-task-board h3 {
+    font-size: 1.25rem; /* 20px */
+    font-weight: 600;
+    color: var(--c-text-heading);
+    margin: 0 0 var(--space-xl) 0;
+}
+
+.admin-kanban-board {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); /* 240px min width */
+    gap: var(--space-xl);
+}
+
+.admin-kanban-column {
+    min-height: 18.75rem; /* 300px */
+    background-color: var(--c-bg-page); /* Light background for columns */
+    padding: var(--space-sm);
+    border-radius: var(--radius-md);
+}
+
+.admin-container.admin-dark .admin-kanban-column {
+    background-color: rgb(var(--color-gray-500));
+}
+
+.admin-kanban-header {
+    padding: var(--space-md);
+    border-radius: var(--radius-md);
+    margin-bottom: var(--space-lg);
+    font-weight: 600;
+    font-size: 0.875rem; /* 14px */
+    text-shadow: 0 1px 2px rgba(0,0,0,0.1); /* Subtle text shadow for better readability on colored backgrounds */
+}
+
+.admin-kanban-header h4 {
+    margin: 0;
+    color: var(--c-text-black
+    );
+}
+
+.admin-kanban-todo { background-color: var(--c-bg-page); }
+.admin-kanban-progress { background-color: var(--c-bg-page); }
+.admin-kanban-done { background-color: var(--c-bg-page); }
+
+.admin-kanban-card {
+    background: var(--c-bg-card);
+    padding: var(--space-lg);
+    border-radius: var(--radius-md);
+    margin-bottom: var(--space-md);
+    border-left: 3px solid var(--c-primary);
+    box-shadow: var(--shadow-sm); /* Lighter shadow for individual cards */
+    transition: transform 0.1s ease-out, box-shadow 0.1s ease-out;
+}
+
+.admin-kanban-card:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 3px 10px rgba(0,0,0,0.07);
+}
+
+.admin-kanban-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--space-sm);
+}
+
+.admin-task-type {
+    background-color: var(--c-secondary-bg);
+    color: var(--c-secondary-text);
+    padding: 0.125rem var(--space-sm); /* 2px 8px */
+    border-radius: var(--radius-sm);
+    font-size: 0.75rem; /* 12px */
+    font-weight: 500;
+}
+
+.admin-task-time {
+    font-size: 0.75rem; /* 12px */
+    color: var(--c-text-light);
+}
+
+.admin-kanban-card p {
+    margin: var(--space-sm) 0;
+    font-size: 0.875rem; /* 14px */
+    color: var(--c-text-default);
+}
+
+.admin-kanban-actions {
+    display: flex;
+    gap: var(--space-sm);
+    margin-top: var(--space-md);
+}
+
+/* Tables */
+.admin-table-container {
+    background: var(--c-bg-card);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm); /* Using softer shadow */
+    overflow-x: auto; /* Allow horizontal scrolling for tables on small screens */
+    overflow-y: hidden;
+}
+
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 35rem; /* Ensure table doesn't get too squished */
+}
+
+.admin-table th {
+    background-color: var(--c-bg-table-header);
+    padding: var(--space-md) var(--space-lg);
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.875rem; /* 14px */
+    color: var(--c-text-heading);
+    border-bottom: 1px solid var(--c-border-default);
+    white-space: nowrap; /* Prevent headers from wrapping */
+}
+
+.admin-table td {
+    padding: var(--space-md) var(--space-lg);
+    border-bottom: 1px solid var(--c-border-light);
+    font-size: 0.875rem; /* 14px */
+    color: var(--c-text-default);
+    white-space: nowrap; /* Prevent content from wrapping unless necessary */
+}
+
+.admin-table tbody tr:hover {
+    background-color: var(--c-secondary-bg);
+}
+
+/* User Cell in Table */
+.admin-user-cell {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+}
+
+.admin-user-name {
+    font-weight: 500;
+    color: var(--c-text-heading);
+}
+
+.admin-user-email {
+    font-size: 0.75rem; /* 12px */
+    color: var(--c-text-light);
+}
+
+/* Badges and Status */
+.admin-badge, .admin-status {
+    padding: var(--space-xs) var(--space-md);
+    border-radius: 9999px;
+    font-size: 0.75rem; /* 12px */
+    font-weight: 500;
+    white-space: nowrap;
+    display: inline-block; /* Ensure padding is applied correctly */
+}
+
+.admin-badge-employer { background-color: rgb(var(--color-blue-100)); color: rgb(var(--color-blue-700)); }
+.admin-badge-employee { background-color: rgb(var(--color-green-100)); color: rgb(var(--color-green-900)); }
+.admin-status-verified { background-color: rgb(var(--color-green-100)); color: rgb(var(--color-green-900)); }
+.admin-status-pending { background-color: rgb(var(--color-orange-100)); color: rgb(var(--color-orange-900)); }
+.admin-status-rejected { background-color: rgb(var(--color-red-100)); color: rgb(var(--color-red-900)); }
+.admin-status-in-progress { background-color: rgb(var(--color-blue-100)); color: rgb(var(--color-blue-700)); }
+
+/* Action Buttons within table cells */
+.admin-action-buttons {
+    display: flex;
+    gap: var(--space-sm);
+}
+
+/* Search and Filters */
+.admin-search-box {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.admin-search-box input {
+    padding: var(--space-sm) var(--space-md) var(--space-sm) 2.5rem; /* 40px left padding for icon */
+    border: 1px solid var(--c-border-default);
+    border-radius: var(--radius-md);
+    font-size: 0.875rem; /* 14px */
+    width: 15.625rem; /* 250px */
+    background: var(--c-bg-card);
+    color: var(--c-text-default);
+    transition: border-color var(--transition-speed), box-shadow var(--transition-speed);
+}
+
+.admin-search-box input::placeholder {
+    color: var(--c-text-light);
+    opacity: 0.8;
+}
+
+.admin-search-box input:focus {
+    outline: none;
+    border-color: var(--c-primary);
+    box-shadow: 0 0 0 3px rgb(var(--color-blue-200), 0.5); /* Subtle focus ring */
+}
+
+.admin-search-box svg {
+    position: absolute;
+    left: var(--space-md);
+    color: var(--c-text-light);
+}
+
+/* Tabs */
+.admin-user-tabs {
+    display: flex;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-xl);
+    flex-wrap: wrap;
+}
+
+.admin-tab {
+    padding: var(--space-sm) var(--space-lg);
+    background: none;
+    border: none;
+    border-radius: var(--radius-md);
+    font-size: 0.875rem; /* 14px */
+    font-weight: 500;
+    cursor: pointer;
+    color: var(--c-text-default);
+    transition: background-color var(--transition-speed), color var(--transition-speed);
+}
+
+.admin-tab:hover {
+    background-color: var(--c-secondary-bg);
+}
+
+.admin-tab-active {
+    background-color: var(--c-primary);
+    color: var(--c-text-white);
+}
+.admin-tab-active:hover {
+    background-color: var(--c-primary-hover);
+}
+
+/* Recent Activity */
+.admin-recent-activity {
+    background: var(--c-bg-card);
+    padding: var(--space-xl);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+}
+
+.admin-recent-activity h3 {
+    font-size: 1.25rem; /* 20px */
+    font-weight: 600;
+    color: var(--c-text-heading);
+    margin: 0 0 var(--space-xl) 0;
+}
+
+/* Verification Queue specific styles */
+.admin-verification-list {
+    display: grid;
+    gap: var(--space-xl);
+}
+
+.admin-verification-card {
+    background: var(--c-bg-card);
+    padding: var(--space-xl);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    border-left: 5px solid var(--c-border-card-left); /* Emphasize with primary color */
+    transition: transform 0.15s ease-out, box-shadow 0.15s ease-out;
+}
+
+.admin-verification-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.admin-verification-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--space-lg);
+    flex-wrap: wrap;
+    gap: var(--space-md);
+}
+
+.admin-verification-header .admin-user-info {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+}
+
+.admin-verification-header .admin-user-info h4 {
+    margin: 0;
+    font-size: 1rem;
+    color: var(--c-text-heading);
+}
+
+.admin-verification-header .admin-user-info p {
+    margin: 0;
+    font-size: 0.75rem;
+    color: var(--c-text-light);
+}
+
+.admin-verification-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+}
+
+.admin-document-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-md);
+}
+
+.admin-document-item {
+    background-color: var(--c-secondary-bg);
+    padding: var(--space-sm) var(--space-md);
+    border-radius: var(--radius-md);
+    font-size: 0.875rem;
+    color: var(--c-secondary-text);
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-sm);
+}
+
+.admin-document-item svg {
+    color: var(--c-primary); /* Checkmark icon color */
+}
+
+.admin-verification-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-md);
+    margin-top: var(--space-md);
+}
+
+/* Messaging Center Specific Styles */
+.admin-messaging-layout {
+    display: grid;
+    grid-template-columns: 0.8fr 2fr; /* Sidebar for messages, main content */
+    gap: var(--space-xl);
+    background: var(--c-bg-card);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    height: calc(100vh - 12rem); /* Adjust based on header/padding, to fill remaining space */
+    overflow: hidden; /* Prevent internal scrollbars from messing with layout */
+}
+
+.admin-message-sidebar {
+    border-right: 1px solid var(--c-border-light);
+    padding: var(--space-xl);
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto; /* Allow message list to scroll */
+}
+
+.admin-message-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-lg);
+    border-bottom: 1px solid var(--c-border-light); /* Separator for tabs */
+    padding-bottom: var(--space-md);
+}
+
+.admin-message-list {
+    flex-grow: 1;
+    overflow-y: auto; /* Allow message list to scroll */
+}
+
+.admin-message-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    padding: var(--space-md);
+    border-radius: var(--radius-md);
+    margin-bottom: var(--space-sm);
+    cursor: pointer;
+    transition: background-color var(--transition-speed);
+}
+
+.admin-message-item:hover {
+    background-color: var(--c-secondary-bg);
+}
+
+.admin-message-item.admin-message-unread {
+    background-color: var(--c-bg-message-item-unread);
+    font-weight: 600; /* Bold unread messages */
+}
+
+.admin-message-item.admin-message-unread .admin-message-name,
+.admin-message-item.admin-message-unread .admin-message-preview {
+    color: var(--c-text-heading);
+}
+
+
+.admin-message-avatar {
+    width: 2.5rem; /* 40px */
+    height: 2.5rem;
+    background-color: rgb(var(--color-blue-200));
+    color: rgb(var(--color-blue-800));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    flex-shrink: 0;
+}
+
+.admin-message-content {
+    flex-grow: 1;
+    overflow: hidden;
+}
+
+.admin-message-name {
+    font-weight: 500;
+    color: var(--c-text-heading);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.admin-message-preview {
+    font-size: 0.875rem;
+    color: var(--c-text-light);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.admin-message-time {
+    font-size: 0.75rem;
+    color: var(--c-text-light);
+    flex-shrink: 0; /* Prevent time from shrinking */
+}
+
+.admin-message-main-content {
+    padding: var(--space-xl);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.admin-message-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--c-border-light);
+    padding-bottom: var(--space-lg);
+    margin-bottom: var(--space-lg);
+}
+
+.admin-message-header h3 {
+    margin: 0;
+    color: var(--c-text-heading);
+    font-size: 1.25rem;
+}
+
+.admin-message-thread {
+    flex-grow: 1;
+    overflow-y: auto; /* Allow message thread to scroll */
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+    padding-right: var(--space-md); /* For scrollbar */
+}
+
+.admin-message-bubble {
+    max-width: 70%;
+    padding: var(--space-md);
+    border-radius: var(--radius-lg);
+    font-size: 0.875rem;
+    line-height: 1.5;
+    word-wrap: break-word;
+}
+
+.admin-message-bubble-sent {
+    background-color: var(--c-primary);
+    color: var(--c-text-white);
+    align-self: flex-end;
+    border-bottom-right-radius: var(--radius-sm); /* Pointy corner */
+}
+
+.admin-message-bubble-received {
+    background-color: var(--c-bg-message-bubble-received);
+    color: var(--c-text-default);
+    align-self: flex-start;
+    border-bottom-left-radius: var(--radius-sm); /* Pointy corner */
+}
+
+.admin-message-input-area {
+    display: flex;
+    gap: var(--space-md);
+    padding-top: var(--space-lg);
+    border-top: 1px solid var(--c-border-light);
+    margin-top: var(--space-lg);
+}
+
+.admin-message-input-area input {
+    flex-grow: 1;
+    padding: var(--space-md);
+    border: 1px solid var(--c-border-default);
+    border-radius: var(--radius-md);
+    font-size: 0.875rem;
+    background: var(--c-bg-page); /* Use page background for input */
+    color: var(--c-text-default);
+}
+
+.admin-message-input-area input:focus {
+    outline: none;
+    border-color: var(--c-primary);
+    box-shadow: 0 0 0 3px rgb(var(--color-blue-200), 0.5);
+}
+
+/* New: Empty State Styling */
+.admin-empty-state {
+    text-align: center;
+    padding: var(--space-2xl);
+    color: var(--c-text-light);
+    font-size: 1.1rem;
+    margin-top: var(--space-2xl);
+}
+
+.admin-empty-state .empty-state-icon {
+    margin-bottom: var(--space-lg);
+    color: var(--c-secondary-text);
+}
+
+
+/* ====================================================================== */
+/* 6. Responsive Adjustments                                            */
+/* Media queries for various screen sizes.                           */
+/* ====================================================================== */
+
+@media (max-width: 1024px) {
+    .admin-sidebar {
+        position: absolute; /* Overlay sidebar on smaller screens */
+        left: -17.5rem; /* Hide by default */
+        top: 0;
+        bottom: 0;
+        z-index: 1000; /* Ensure it's on top */
+        box-shadow: var(--shadow-md); /* Add shadow when open */
+    }
+
+    .admin-sidebar-open {
+        left: 0;
+    }
+
+    .admin-mobile-menu {
+        display: block; /* Show menu icon */
+    }
+
+    .admin-main {
+        padding-left: 0; /* Remove padding for collapsed sidebar */
+    }
+
+    .admin-messaging-layout {
+        grid-template-columns: 1fr; /* Stack message sidebar and content */
+        height: auto; /* Allow height to adapt to content */
+        max-height: 100vh; /* Prevent excessive height if content is very long */
+        overflow-y: auto;
+    }
+
+    .admin-message-sidebar {
+        height: auto;
+        max-height: 20rem; /* Limit sidebar height to avoid taking too much space */
+    }
+}
+
+@media (max-width: 768px) {
+    .admin-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--space-md);
+        padding: var(--space-md) var(--space-lg);
+    }
+
+    .admin-header-left {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .admin-header-right {
+        width: 100%;
+        justify-content: flex-end; /* Align to right */
+    }
+
+    .admin-section-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--space-lg);
+    }
+
+    .admin-header-actions {
+        flex-direction: column;
+        width: 100%;
+        gap: var(--space-md);
+    }
+
+    .admin-header-actions .admin-btn,
+    .admin-header-actions .admin-search-box input {
+        width: 100%; /* Make buttons and search full width */
+    }
+
+    .admin-messaging-layout {
+        grid-template-columns: 1fr; /* Stack message sidebar and content */
+        height: auto; /* Allow height to adapt to content */
+        max-height: 100vh; /* Prevent excessive height if content is very long */
+        overflow-y: auto;
+    }
+
+    .admin-message-sidebar {
+        height: auto;
+        max-height: 20rem; /* Limit sidebar height to avoid taking too much space */
+    }
+}
+
+@media (max-width: 480px) {
+    .admin-content {
+        padding: var(--space-lg);
+    }
+
+    .admin-stats-grid,
+    .admin-kanban-board,
+    .admin-verification-content,
+    .admin-reports-grid,
+    .admin-analytics-grid,
+    .admin-settings-grid {
+        grid-template-columns: 1fr; /* Single column for all grids */
+    }
 }

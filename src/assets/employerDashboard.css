@@ -1,49 +1,287 @@
 /* Employer Dashboard Styles */
-.employer-dashboard {
+.employer-container {
     display: flex;
     min-height: 100vh;
     background-color: rgb(239, 246, 255);
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    color: rgb(30, 58, 138);
+    overflow: hidden; /* Prevent body scroll due to absolute sidebar */
+}
+
+/* Dark Mode Styles */
+html.dark-mode .employer-container {
+    background-color: rgb(26, 32, 44);
+    color: rgb(203, 213, 225);
+}
+
+html.dark-mode .employer-sidebar {
+    background: rgb(45, 55, 72);
+    border-right-color: rgb(63, 75, 96);
+}
+
+html.dark-mode .employer-logo-text {
+    color: rgb(247, 250, 252);
+}
+
+html.dark-mode .employer-nav-item {
+    color: rgb(203, 213, 225);
+}
+
+html.dark-mode .employer-nav-item:hover {
+    background-color: rgb(59, 70, 89);
+    color: rgb(96, 165, 250);
+}
+
+html.dark-mode .employer-nav-active {
+    background-color: rgb(59, 70, 89);
+    color: rgb(96, 165, 250);
+    border-right-color: rgb(96, 165, 250);
+}
+
+html.dark-mode .employer-main {
+    background-color: rgb(26, 32, 44);
+}
+
+html.dark-mode .employer-header {
+    background-color: rgb(45, 55, 72);
+    border-bottom-color: rgb(63, 75, 96);
+}
+
+html.dark-mode .employer-header h1 {
+    color: rgb(247, 250, 252);
+}
+
+html.dark-mode .employer-mobile-menu,
+html.dark-mode .employer-theme-toggle {
+    color: rgb(203, 213, 225);
+}
+
+html.dark-mode .employer-mobile-menu:hover,
+html.dark-mode .employer-theme-toggle:hover {
+    background-color: rgb(59, 70, 89);
+}
+
+html.dark-mode .employer-user-menu {
+    background-color: rgb(59, 70, 89);
+}
+
+html.dark-mode .employer-user-menu:hover {
+    background-color: rgb(70, 80, 100);
+}
+
+html.dark-mode .employer-user-avatar {
+    background-color: rgb(96, 165, 250);
+}
+
+html.dark-mode .dashboard-title,
+html.dark-mode .section-title,
+html.dark-mode .form-title,
+html.dark-mode .kanban-title,
+html.dark-mode .stat-content h3,
+html.dark-mode .job-title,
+html.dark-mode .applicant-name {
+    color: rgb(247, 250, 252);
+}
+
+html.dark-mode .dashboard-subtitle,
+html.dark-mode .stat-content p,
+html.dark-mode .kanban-count,
+html.dark-mode .candidate-name-kanban,
+html.dark-mode .candidate-position-kanban,
+html.dark-mode .candidate-detail-kanban span,
+html.dark-mode .form-subtitle,
+html.dark-mode .form-label,
+html.dark-mode .search-input,
+html.dark-mode .job-detail span,
+html.dark-mode .applicant-position,
+html.dark-mode .applicant-detail span,
+html.dark-mode .placeholder-text,
+html.dark-mode .shortlist-card h3,
+html.dark-mode .shortlist-card p {
+    color: rgb(160, 174, 192);
+}
+
+html.dark-mode .stat-card,
+html.dark-mode .kanban-column,
+html.dark-mode .candidate-card,
+html.dark-mode .job-form,
+html.dark-mode .job-card,
+html.dark-mode .applicant-card,
+html.dark-mode .shortlist-card {
+    background: rgb(45, 55, 72);
+    border-color: rgb(63, 75, 96);
+}
+
+html.dark-mode .form-input,
+html.dark-mode .form-select,
+html.dark-mode .form-textarea,
+html.dark-mode .search-input {
+    background-color: rgb(35, 43, 56);
+    border-color: rgb(63, 75, 96);
+    color: rgb(247, 250, 252);
+}
+
+html.dark-mode .form-input::placeholder,
+html.dark-mode .form-textarea::placeholder,
+html.dark-mode .search-input::placeholder {
+    color: rgb(160, 174, 192);
+}
+
+html.dark-mode .form-input:focus,
+html.dark-mode .form-select:focus,
+html.dark-mode .form-textarea:focus,
+html.dark-mode .search-input:focus {
+    outline: none;
+    border-color: rgb(96, 165, 250);
+    box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.1);
+}
+
+html.dark-mode .btn-primary,
+html.dark-mode .action-btn-primary,
+html.dark-mode .shortlist-action-button {
+    background-color: rgb(96, 165, 250);
+    border-color: rgb(96, 165, 250);
+}
+
+html.dark-mode .btn-primary:hover,
+html.dark-mode .action-btn-primary:hover,
+html.dark-mode .shortlist-action-button:hover {
+    background-color: rgb(66, 153, 225);
+}
+
+html.dark-mode .btn-secondary,
+html.dark-mode .action-btn-secondary {
+    background-color: rgb(45, 55, 72);
+    color: rgb(203, 213, 225);
+    border-color: rgb(63, 75, 96);
+}
+
+html.dark-mode .btn-secondary:hover,
+html.dark-mode .action-btn-secondary:hover {
+    background-color: rgb(59, 70, 89);
+}
+
+html.dark-mode .btn-outline,
+html.dark-mode .action-btn-outline {
+    background-color: transparent;
+    color: rgb(96, 165, 250);
+    border-color: rgb(63, 75, 96);
+}
+
+html.dark-mode .btn-outline:hover,
+html.dark-mode .action-btn-outline:hover {
+    background-color: rgb(45, 55, 72);
+}
+
+html.dark-mode .action-btn-danger {
+    background-color: transparent;
+    color: rgb(255, 94, 94);
+    border-color: rgb(180, 50, 50);
+}
+
+html.dark-mode .action-btn-danger:hover {
+    background-color: rgb(70, 30, 30);
+}
+
+html.dark-mode .job-status.active {
+    background-color: rgb(209, 250, 229);
+    color: rgb(52, 211, 153);
+}
+
+html.dark-mode .job-status.draft {
+    background-color: rgb(254, 249, 195);
+    color: rgb(202, 138, 4);
+}
+
+html.dark-mode .kanban-column {
+    border-color: rgb(63, 75, 96);
+}
+
+html.dark-mode .kanban-header {
+    border-bottom-color: rgb(63, 75, 96);
+}
+
+html.dark-mode .kanban-count {
+    background-color: rgb(63, 75, 96);
+    color: rgb(160, 174, 192);
+}
+
+html.dark-mode .candidate-avatar-kanban,
+html.dark-mode .applicant-avatar,
+html.dark-mode .shortlist-avatar {
+    background-color: rgb(63, 75, 96);
+    color: rgb(96, 165, 250);
+}
+
+html.dark-mode .verification-badge {
+    color: rgb(52, 211, 153);
 }
 
 /* Sidebar Styles */
-.sidebar {
+.employer-sidebar {
     width: 280px;
     background: white;
     border-right: 1px solid rgb(219, 234, 254);
     display: flex;
     flex-direction: column;
+    flex-shrink: 0;
+    transition: all 0.3s ease;
 }
 
-.sidebar-header {
+.employer-sidebar-closed {
+    width: 80px;
+}
+
+.employer-sidebar-header {
     padding: 24px 20px;
     border-bottom: 1px solid rgb(219, 234, 254);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-shrink: 0;
 }
 
-.logo {
+.employer-logo {
     display: flex;
     align-items: center;
     gap: 12px;
-    height: 48px;
-    widht:50px;
 }
 
-.logo-icon {
+.employer-logo-icon {
     color: rgb(59, 130, 246);
 }
 
-.logo-text {
+.employer-logo-text {
     font-size: 20px;
     font-weight: 700;
     color: rgb(30, 58, 138);
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
-.sidebar-nav {
+.employer-sidebar-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 6px;
+    color: rgb(55, 65, 81);
+    transition: background-color 0.2s ease;
+}
+
+.employer-sidebar-toggle:hover {
+    background-color: rgb(239, 246, 255);
+}
+
+.employer-nav {
     padding: 20px 0;
     flex: 1;
+    overflow-y: auto;
 }
 
-.nav-item {
+.employer-nav-item {
     width: 100%;
     display: flex;
     align-items: center;
@@ -58,27 +296,124 @@
     font-size: 14px;
 }
 
-.nav-item:hover {
+.employer-nav-item:hover {
     background-color: rgb(239, 246, 255);
     color: rgb(59, 130, 246);
 }
 
-.nav-item.active {
+.employer-nav-active {
     background-color: rgb(219, 234, 254);
     color: rgb(29, 78, 216);
     border-right: 3px solid rgb(59, 130, 246);
 }
 
-.nav-icon {
-    flex-shrink: 0;
+.employer-sidebar-closed .employer-nav-item span {
+    display: none;
 }
 
-.nav-label {
-    font-weight: 500;
+.employer-sidebar-closed .employer-sidebar-header .employer-logo-text {
+    display: none;
 }
 
 /* Main Content Styles */
-.main-content {
+.employer-main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* Header (Similar to admin-header) */
+.employer-header {
+    background: white;
+    padding: 16px 32px;
+    border-bottom: 1px solid rgb(219, 234, 254);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-shrink: 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.employer-header-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.employer-header-left h1 {
+    font-size: 24px;
+    font-weight: 600;
+    color: rgb(30, 58, 138);
+    margin: 0;
+}
+
+.employer-mobile-menu {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 6px;
+    color: rgb(55, 65, 81);
+    transition: background-color 0.2s ease;
+}
+
+.employer-mobile-menu:hover {
+    background-color: rgb(239, 246, 255);
+}
+
+.employer-header-right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.employer-theme-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 6px;
+    color: rgb(55, 65, 81);
+    transition: background-color 0.2s ease;
+}
+
+.employer-theme-toggle:hover {
+    background-color: rgb(239, 246, 255);
+}
+
+.employer-user-menu {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background-color: rgb(219, 234, 254);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.employer-user-menu:hover {
+    background-color: rgb(191, 219, 254);
+}
+
+.employer-user-avatar {
+    width: 32px;
+    height: 32px;
+    background-color: rgb(59, 130, 246);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.employer-content {
     flex: 1;
     padding: 32px;
     overflow-y: auto;
@@ -89,7 +424,7 @@
     max-width: 1200px;
 }
 
-.dashboard-header {
+.dashboard-header-main {
     margin-bottom: 32px;
 }
 
@@ -221,6 +556,7 @@
     gap: 16px;
 }
 
+/* Modified .candidate-card for Kanban to prevent conflicts */
 .candidate-card {
     background: rgb(249, 250, 251);
     border: 1px solid rgb(219, 234, 254);
@@ -239,14 +575,14 @@
     cursor: grabbing;
 }
 
-.candidate-header {
+.candidate-header-kanban { /* New class */
     display: flex;
     align-items: flex-start;
     gap: 12px;
     margin-bottom: 12px;
 }
 
-.candidate-avatar {
+.candidate-avatar-kanban { /* New class */
     width: 40px;
     height: 40px;
     background-color: rgb(219, 234, 254);
@@ -257,18 +593,18 @@
     color: rgb(59, 130, 246);
 }
 
-.candidate-info {
+.candidate-info-kanban { /* New class */
     flex: 1;
 }
 
-.candidate-name {
+.candidate-name-kanban { /* New class */
     font-size: 14px;
     font-weight: 600;
     color: rgb(30, 58, 138);
     margin: 0 0 4px 0;
 }
 
-.candidate-position {
+.candidate-position-kanban { /* New class */
     font-size: 12px;
     color: rgb(55, 65, 81);
     margin: 0;
@@ -278,14 +614,14 @@
     color: rgb(34, 197, 94);
 }
 
-.candidate-details {
+.candidate-details-kanban { /* New class */
     display: flex;
     flex-direction: column;
     gap: 8px;
     margin-bottom: 12px;
 }
 
-.candidate-detail {
+.candidate-detail-kanban { /* New class */
     display: flex;
     align-items: center;
     gap: 8px;
@@ -293,7 +629,7 @@
     color: rgb(55, 65, 81);
 }
 
-.candidate-actions {
+.candidate-actions-kanban { /* New class */
     display: flex;
     gap: 8px;
 }
@@ -656,39 +992,130 @@
     margin: 0;
 }
 
+/* Shortlisting Page */
+.shortlist-section {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.shortlist-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.shortlist-card {
+    background-color: white; /* Changed from var(--blue-50) for consistency */
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.shortlist-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+}
+
+.shortlist-card h3 {
+    margin-bottom: 0.5rem;
+    color: rgb(30, 58, 138); /* Changed from var(--blue-900) */
+}
+
+.shortlist-card p {
+    margin: 0.25rem 0;
+    color: rgb(55, 65, 81); /* Changed from var(--gray-700) */
+}
+
+.shortlist-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.shortlist-avatar {
+    width: 48px;
+    height: 48px;
+    background-color: rgb(219, 234, 254);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgb(59, 130, 246);
+}
+
+.shortlist-info {
+    flex: 1;
+}
+
+.shortlist-name {
+    font-size: 16px;
+    font-weight: 600;
+    color: rgb(30, 58, 138);
+    margin: 0 0 4px 0;
+}
+
+.shortlist-position {
+    font-size: 14px;
+    color: rgb(55, 65, 81);
+    margin: 0;
+}
+
+.shortlist-details {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.shortlist-detail {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: rgb(55, 65, 81);
+}
+
+.shortlist-actions {
+    display: flex;
+    gap: 8px;
+}
+
 /* Responsive Design */
 @media (max-width: 1024px) {
-    .employer-dashboard {
+    .employer-container {
         flex-direction: column;
     }
 
-    .sidebar {
-        width: 100%;
-        order: 2;
+    .employer-sidebar {
+        position: fixed;
+        left: -280px;
+        top: 0;
+        bottom: 0;
+        z-index: 1000;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     }
 
-    .sidebar-nav {
-        display: flex;
-        overflow-x: auto;
-        padding: 0;
+    .employer-container.sidebar-open .employer-sidebar {
+        left: 0;
     }
 
-    .nav-item {
-        min-width: 120px;
-        flex-direction: column;
-        gap: 4px;
-        padding: 12px 8px;
-        text-align: center;
+    .employer-sidebar-toggle {
+        display: none;
     }
 
-    .nav-item.active {
-        border-right: none;
-        border-bottom: 3px solid rgb(59, 130, 246);
+    .employer-main {
+        padding-left: 0;
     }
 
-    .main-content {
-        order: 1;
-        padding: 20px;
+    .employer-mobile-menu {
+        display: block;
+    }
+
+    .employer-header {
+        padding: 16px 20px;
     }
 
     .stats-grid {
@@ -724,11 +1151,12 @@
     }
 
     .jobs-grid,
-    .applicants-grid {
+    .applicants-grid,
+    .shortlist-grid {
         grid-template-columns: 1fr;
     }
 
-    .main-content {
+    .employer-content {
         padding: 16px;
     }
 
@@ -749,258 +1177,26 @@
     }
 }
 
-.menu {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
+/* Sidebar collapse on smaller screens: only icons visible (when closed) */
+@media (max-width: 1024px) {
+    .employer-sidebar-closed {
+        width: 80px;
+    }
+
+    .employer-sidebar-closed .employer-logo-text {
+        display: none;
+    }
+
+    .employer-sidebar-closed .employer-nav-item {
+        justify-content: center;
+        padding: 12px 0;
+    }
+
+    .employer-sidebar-closed .employer-nav-item span {
+        display: none;
+    }
+
+    .employer-mobile-menu {
+        display: block;
+    }
 }
-
-.menu-item {
-    display: flex;
-    align-items: center;
-    padding: 0.75rem;
-    border-radius: 0.5rem;
-    background-color: #f8f9fa;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-}
-
-.menu-item .icon {
-    margin-right: 0.5rem;
-}
-
-.menu-item.active {
-    background-color: #e0f7fa;
-    font-weight: 600;
-}
-
-.form-container {
-    margin-top: 2rem;
-    padding: 2rem;
-    background-color: #ffffff;
-    border-radius: 0.75rem;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-}
-
-.verify-form {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-}
-
-.form-group {
-    display: flex;
-    flex-direction: column;
-}
-
-.form-group label {
-    font-weight: 500;
-    margin-bottom: 0.5rem;
-}
-
-input {
-    padding: 0.5rem;
-    border: 1px solid #ddd;
-    border-radius: 0.5rem;
-}
-
-.submit-button {
-    padding: 0.75rem;
-    background-color: #0d9488;
-    color: white;
-    border: none;
-    border-radius: 0.5rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.submit-button:hover {
-    background-color: #0f766e;
-}
-
-/*shortlist page*/
-
-/*.shortlist-page {*/
-/*    padding: 2rem;*/
-/*    background-color: #f8f9fc;*/
-/*    min-height: 100vh;*/
-/*}*/
-
-/*.shortlist-header {*/
-/*    display: flex;*/
-/*    justify-content: space-between;*/
-/*    align-items: center;*/
-/*    margin-bottom: 2rem;*/
-/*}*/
-
-/*.shortlist-title {*/
-/*    font-size: 1.75rem;*/
-/*    font-weight: bold;*/
-/*    color: #333;*/
-/*}*/
-
-/*.shortlist-count {*/
-/*    font-size: 1rem;*/
-/*    color: #666;*/
-/*}*/
-
-/*.shortlist-container {*/
-/*    display: grid;*/
-/*    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));*/
-/*    gap: 1.5rem;*/
-/*}*/
-
-/*.candidate-card {*/
-/*    background-color: #ffffff;*/
-/*    border: 1px solid #e2e8f0;*/
-/*    border-radius: 10px;*/
-/*    padding: 1.25rem;*/
-/*    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);*/
-/*    transition: transform 0.2s ease;*/
-/*}*/
-
-/*.candidate-card:hover {*/
-/*    transform: translateY(-4px);*/
-/*}*/
-
-/*.candidate-name {*/
-/*    font-size: 1.2rem;*/
-/*    font-weight: 600;*/
-/*    color: #222;*/
-/*    margin-bottom: 0.25rem;*/
-/*}*/
-
-/*.candidate-role {*/
-/*    font-size: 0.95rem;*/
-/*    color: #555;*/
-/*    margin-bottom: 1rem;*/
-/*}*/
-
-/*.candidate-actions {*/
-/*    display: flex;*/
-/*    justify-content: flex-end;*/
-/*    gap: 0.75rem;*/
-/*}*/
-
-/*.btn-outline {*/
-/*    padding: 0.5rem 1rem;*/
-/*    border: 1px solid #007bff;*/
-/*    background-color: transparent;*/
-/*    color: #007bff;*/
-/*    border-radius: 6px;*/
-/*    cursor: pointer;*/
-/*    transition: all 0.2s ease;*/
-/*    font-weight: 500;*/
-/*}*/
-
-/*.btn-outline:hover {*/
-/*    background-color: #007bff;*/
-/*    color: #fff;*/
-/*}*/
-
-/*@media (max-width: 600px) {*/
-/*    .shortlist-header {*/
-/*        flex-direction: column;*/
-/*        align-items: flex-start;*/
-/*        gap: 0.5rem;*/
-/*    }*/
-
-/*    .candidate-actions {*/
-/*        flex-direction: column;*/
-/*        align-items: stretch;*/
-/*    }*/
-
-/*    .btn-outline {*/
-/*        width: 100%;*/
-/*    }*/
-/*}*/
-
-/*shortlist*/
-
-/* Color Palette - Local Only */
-:root {
-    --blue-50: rgb(239, 246, 255);
-    --blue-100: rgb(219, 234, 254);
-    --blue-200: rgb(191, 219, 254);
-    --blue-500: rgb(59, 130, 246);
-    --blue-600: rgb(37, 99, 235);
-    --blue-700: rgb(29, 78, 216);
-    --blue-800: rgb(30, 64, 175);
-    --blue-900: rgb(30, 58, 138);
-    --gray-700: rgb(55, 65, 81);
-}
-
-/* Main Container */
-.shortlist-page {
-    padding: 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
-    display: grid;
-    gap: 1.5rem;
-}
-
-/* Card Styling */
-.shortlist-card {
-    background-color: var(--blue-50);
-    border-radius: 12px;
-    padding: 1.5rem;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.shortlist-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
-}
-
-.shortlist-card h3 {
-    margin-bottom: 0.5rem;
-    color: var(--blue-900);
-}
-
-.shortlist-card p {
-    margin: 0.25rem 0;
-    color: var(--gray-700);
-}
-
-/* Button */
-.shortlist-action-button {
-    margin-top: 1rem;
-    padding: 0.5rem 1rem;
-    background-color: var(--blue-600);
-    color: white;
-    border: none;
-    border-radius: 6px;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.shortlist-action-button:hover {
-    background-color: var(--blue-700);
-}
-
-/* Dark Mode Support */
-/*@media (prefers-color-scheme: dark) {*/
-/*    .shortlist-card {*/
-/*        background-color: var(--blue-50);*/
-/*        color: white;*/
-/*    }*/
-
-/*    .shortlist-card h3 {*/
-/*        color: black;*/
-/*    }*/
-
-/*    .shortlist-card p {*/
-/*        color: var(--blue-700);*/
-/*    }*/
-
-/*    .shortlist-action-button {*/
-/*        background-color: var(--blue-500);*/
-/*    }*/
-
-/*    .shortlist-action-button:hover {*/
-/*        background-color: var(--blue-600);*/
-/*    }*/
-/*}*/
-
